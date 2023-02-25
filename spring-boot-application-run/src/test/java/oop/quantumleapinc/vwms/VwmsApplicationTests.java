@@ -1,10 +1,10 @@
-package com.example.sprintbootapplicationrun;
+package oop.quantumleapinc.vwms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SprintBootApplicationRunApplicationTests {
+class VwmsApplicationTests {
 
 	@Test
 	void contextLoads() {

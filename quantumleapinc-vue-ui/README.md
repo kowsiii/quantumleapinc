@@ -1,4 +1,4 @@
-# oop-quantumtech
+# quantumleapinc-vue-ui
 
 ## Project setup
 ```
