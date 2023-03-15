@@ -1,5 +1,8 @@
 <template>
+
+<el-input placeholder="Please input" />
   <Form @submit="handleLogin">
+
   <div class="col-md-6">
     <div class="card card-container">
       <label for="email">Email/Username:</label>
@@ -14,6 +17,7 @@
 
 <script>
 import { Form, Field } from "vee-validate";
+import LoginComponent from "@/components/LoginComponent.vue";
 export default {
   name: "UserLogin",
   data () {
@@ -26,6 +30,7 @@ export default {
   components: {
     Form,
     Field,
+    LoginComponent
 
   },
     created() {
