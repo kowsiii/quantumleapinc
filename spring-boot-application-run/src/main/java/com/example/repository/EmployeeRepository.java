@@ -7,5 +7,8 @@ import com.example.entity.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
+
+    Employee findByEmail(String email);
     
 }
+//entity -> repo -> service -> controller

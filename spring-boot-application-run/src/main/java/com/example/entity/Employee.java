@@ -17,8 +17,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @Column(name ="Employee_Id")
+    @GeneratedValue
+    @Column(name ="employee_Id")
     private int id;
-    @Column(name ="Employee_Name")
+    @Column(name ="employee_Name")
     private String name;
+    @Column(name ="employee_Email")
+    private String email;
+    @Column(name ="employee_Password")
+    private String password;
+    @Column(name ="employee_Type")
+    private String type;
 }
+
+//entity -> repo -> service -> controller
