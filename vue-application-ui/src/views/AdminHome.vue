@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <Navbar />
+    <router-view />
     <div class="col-md-6">
       <div class="card card-container">
         Admin!!
@@ -6,10 +9,13 @@
         <button v-on:click="registerUser">Register New User</button>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
-  export default {
+  import Navbar from '../components/NavBar.vue';
+
+  /*export default {
     name: "AdminHome",
     data () {
         return {
@@ -37,6 +43,14 @@
             this.$router.push("/register");
         }
   
-  }}
+  }}*/
+
+  export default {
+    name: 'App',
+    components: {
+      Navbar,
+    },
+  };
+  
   
   </script>
