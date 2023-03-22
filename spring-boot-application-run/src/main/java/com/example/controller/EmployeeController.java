@@ -11,37 +11,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.Employee;
-import com.example.service.EmployeeService;
+import com.example.entity.User;
+import com.example.service.UserService;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
-    private EmployeeService service;
+    private UserService service;
 
     //pathvariable and request body
 
     //(from UMl - add user)
     @PostMapping("/saveEmployee")
-    public Employee addEmployee(@RequestBody Employee e){
+    public User addEmployee(@RequestBody User e){
         return service.saveEmployee(e);
     }
     //(from UMl - get All users)
     @GetMapping("/getAll")
-    public List<Employee> getEmployees(){
+    public List<User> getEmployees(){
         return service.getEmployees();
     }
 
     //(from UMl - get user by ID)
     @GetMapping("/getById/{id}")
-    public Employee getEmployeeById(@PathVariable int id){
+    public User getEmployeeById(@PathVariable int id){
         return service.getEmployeeById(id);
     }
 
     //(from UML validate user)
     @GetMapping("/validate/{email}/{password}")
-    public Employee validateUser(@PathVariable String email,@PathVariable String password){
+    public User validateUser(@PathVariable String email,@PathVariable String password){
         return service.validateUser(email, password);
     }
 

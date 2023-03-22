@@ -7,32 +7,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.example.entity.Employee;
+import com.example.entity.User;
 import com.example.entity.returnMsg;
-import com.example.repository.EmployeeRepository;
+import com.example.repository.UserRepository;
 import com.google.gson.Gson;  
 
 //talks to repo
 @Service
-public class EmployeeService {
+public class UserService {
     
     @Autowired
-    private EmployeeRepository repository;
+    private UserRepository repository;
 
-    public Employee saveEmployee(Employee e){
+    public User saveEmployee(User e){
         return repository.save(e);
     }
 
-    public List<Employee> getEmployees(){
+    public List<User> getEmployees(){
         return repository.findAll();
     }
 
-    public Employee getEmployeeById(int id){
+    public User getEmployeeById(int id){
         return repository.findById(id).get();
     }
 
-    public Employee validateUser(String email, String password){
-        Employee e= repository.findByEmail(email);
+    public User validateUser(String email, String password){
+        User e= repository.findByEmail(email);
         if(e.getPassword().equals(password)){
             return e;
         } else{
@@ -50,7 +50,7 @@ public class EmployeeService {
         // }
         
         // return "Employee deleted";
-        Optional<Employee> e = repository.findById(id);
+        Optional<User> e = repository.findById(id);
         System.out.println(e);
         if(ObjectUtils.isEmpty(e)){
             returnMsg m = new returnMsg(400,"error");

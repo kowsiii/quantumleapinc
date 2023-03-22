@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,20 +15,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employee")
-public class Employee {
+@MappedSuperclass
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue
-    @Column(name ="employee_Id")
+    @Column(name ="userId")
     private int id;
-    @Column(name ="employee_Name")
+    @Column(name ="loginUserName")
     private String name;
-    @Column(name ="employee_Email")
-    private String email;
-    @Column(name ="employee_Password")
+    @Column(name ="userPassword")
     private String password;
-    @Column(name ="employee_Type")
-    private String type;
+    @Column(name ="userType")
+    private String userType;
+
 }
 
 //entity -> repo -> service -> controller

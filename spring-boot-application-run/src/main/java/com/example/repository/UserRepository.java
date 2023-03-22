@@ -3,12 +3,12 @@ package com.example.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.entity.Employee;
+import com.example.entity.User;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
+public interface UserRepository extends JpaRepository<User,Integer> {
 
-    Employee findByEmail(String email);
+    User findByEmail(String email);
     
 }
 //entity -> repo -> service -> controller
