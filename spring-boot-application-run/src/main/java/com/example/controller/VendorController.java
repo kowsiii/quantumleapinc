@@ -28,8 +28,6 @@ public class VendorController {
     //(from UMl - add user)
     @PostMapping("/saveEmployee")
     public Vendor addEmployee(@RequestBody Vendor e){
-        System.out.println(e.getVendorId());
-        System.out.println(e.getVendorRegNo());
         return service.saveEmployee(e);
     }
 

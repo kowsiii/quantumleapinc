@@ -3,7 +3,11 @@ package com.example.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Vendor")
 public class Vendor extends User {
@@ -21,16 +25,5 @@ public class Vendor extends User {
     // private int vendorTelephone;
     // @Column(name ="lineOfBusiness")
     // // private String vendorLob;
-    public Vendor(){}
-    public Vendor(String name, String password, int vendorId, int vendorRegNo){
-        super(name, password);
-        this.vendorId = vendorId;
-        this.vendorRegNo = vendorRegNo;
-    }
-    public int getVendorId() {
-        return this.vendorId;
-    }
-    public int getVendorRegNo() {
-        return this.vendorRegNo;
-    }
+
 }
