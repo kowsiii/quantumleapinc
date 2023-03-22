@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.example.entity.User;
+import com.example.entity.Vendor;
 import com.example.entity.returnMsg;
 import com.example.repository.UserRepository;
+import com.example.repository.VendorRepository;
 import com.google.gson.Gson;  
 
 //talks to repo
@@ -19,9 +21,9 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public User saveEmployee(User e){
-        return repository.save(e);
-    }
+    // public Vendor saveEmployee(Vendor e){
+    //     return repository.save(e);
+    // }
 
     public List<User> getEmployees(){
         return repository.findAll();
@@ -31,16 +33,16 @@ public class UserService {
         return repository.findById(id).get();
     }
 
-    public User validateUser(String email, String password){
-        User e= repository.findByEmail(email);
-        if(e.getPassword().equals(password)){
-            return e;
-        } else{
-            System.out.println(e.getPassword());
-            System.out.println(password);
-            return null;
-        }
-    }
+    // public User validateUser(String email, String password){
+    //     User e= repository.findByEmail(email);
+    //     if(e.getPassword().equals(password)){
+    //         return e;
+    //     } else{
+    //         System.out.println(e.getPassword());
+    //         System.out.println(password);
+    //         return null;
+    //     }
+    // }
 
     public String deleteEmployee(int id){
         // try{
