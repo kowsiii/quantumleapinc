@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import com.example.entity.Employee;
 import com.example.entity.User;
 import com.example.entity.Vendor;
 import com.example.entity.returnMsg;
-import com.example.repository.UserRepository;
-import com.example.repository.VendorRepository;
+import com.example.repository.EmployeeRepository;
 import com.google.gson.Gson;  
 
 //talks to repo
 @Service
-public class VendorService {
+public class EmployeeService {
     
     @Autowired
-    private VendorRepository repository;
+    private EmployeeRepository repository;
 
-    public Vendor saveVendor(Vendor e){
+    public Employee saveEmployee(Employee e){
         return repository.save(e);
     }
 

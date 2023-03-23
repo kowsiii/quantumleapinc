@@ -17,7 +17,7 @@ import com.example.entity.Vendor;
 import com.example.service.UserService;
 import com.example.service.VendorService;
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/vendor")
 public class VendorController {
 
     @Autowired
@@ -26,9 +26,9 @@ public class VendorController {
     //pathvariable and request body
 
     //(from UMl - add user)
-    @PostMapping("/saveEmployee")
+    @PostMapping("/saveVendor")
     public Vendor addEmployee(@RequestBody Vendor e){
-        return service.saveEmployee(e);
+        return service.saveVendor(e);
     }
 
 

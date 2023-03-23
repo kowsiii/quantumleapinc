@@ -25,11 +25,11 @@ public class UserService {
     //     return repository.save(e);
     // }
 
-    public List<User> getEmployees(){
+    public List<User> getUsers(){
         return repository.findAll();
     }
 
-    public User getEmployeeById(int id){
+    public User getUserById(int id){
         return repository.findById(id).get();
     }
 
@@ -44,7 +44,7 @@ public class UserService {
     //     }
     // }
 
-    public String deleteEmployee(int id){
+    public String deleteUser(int id){
         // try{
         //     repository.deleteById(id);
         // }catch(Exception e){
