@@ -1,7 +1,7 @@
 <template>
     <div>
 
-      <button @click="logOut">Go to FormBuilder</button>
+      <button @click="logOut">Sign Out</button>
     </div>
 
     <div class="input-container">

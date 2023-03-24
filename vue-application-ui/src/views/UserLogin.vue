@@ -43,8 +43,12 @@
 
 <br/>
     <div style="text-align: right;">
-      <el-button type="primary" native-type="submit">Login</el-button>
+      <el-button type="primary" native-type="submit">Login</el-button><br/><br/>
+      <a href="www.google.com">Forgot password?</a><br/>
+      <a></a>
     </div>
+
+
   </Form>
   <br/>
   <br/>
