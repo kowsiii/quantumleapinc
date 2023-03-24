@@ -38,6 +38,23 @@
   <script>
 
   export default {
+  <div>
+    <AdminNavBar />
+    <router-view />
+    <div class="col-md-6">
+      <div class="card card-container">
+        Admin!!
+        <button v-on:click="logOut">Logout</button>
+        <button v-on:click="registerUser">Register New User</button>
+      </div>
+    </div>
+  </div>
+</template>
+  
+  <script>
+  import AdminNavBar from '../components/AdminNavBar.vue';
+
+  /*export default {
     name: "AdminHome",
     components:{
       
@@ -68,6 +85,14 @@
             this.$router.push("/register");
         }
   
-  }}
+  }}*/
+
+  export default {
+    name: 'App',
+    components: {
+      AdminNavBar,
+    },
+  };
+  
   
   </script>

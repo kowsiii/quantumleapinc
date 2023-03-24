@@ -1,8 +1,10 @@
 package com.example.repository;
+
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface EmployeeRepository extends UserRepository {
+public interface VendorRepository extends UserRepository {
 
     // User findByEmail(String email);
     

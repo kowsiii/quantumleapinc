@@ -12,25 +12,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.Employee;
 import com.example.entity.User;
 import com.example.entity.Vendor;
-import com.example.service.EmployeeService;
 import com.example.service.UserService;
 import com.example.service.VendorService;
 @RestController
-@RequestMapping("/employee")
-public class EmployeeController {
+@RequestMapping("/vendor")
+public class VendorController {
 
     @Autowired
-    private EmployeeService service;
+    private VendorService service;
 
     //pathvariable and request body
 
     //(from UMl - add user)
-    @PostMapping("/saveEmployee")
-    public Employee addEmployee(@RequestBody Employee e){
-        return service.saveEmployee(e);
+    @PostMapping("/saveVendor")
+    public Vendor addEmployee(@RequestBody Vendor e){
+        return service.saveVendor(e);
     }
 
 
