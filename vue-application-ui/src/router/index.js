@@ -4,12 +4,12 @@ import { createWebHistory, createRouter } from "vue-router";
 const routes = [
     {
       path: "/",
-      name: "login",
+      name: "login1",
       component: () => import('@/views/UserLogin.vue'),
     },
     {
-        path: "/home",
-        name: "home",
+        path: "/admin_home",
+        name: "admin_home",
         component: () => import('@/views/AdminHome.vue'),
       },
       {
@@ -17,6 +17,25 @@ const routes = [
         name: "register",
         component: () => import('@/views/RegisterUser.vue'),
       },
+      {
+        path: "/vendor",
+        name: "vendor",
+        component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/formbuilder",
+        name: "formbuilder",
+        component: () => import('@/views/FormBuilder.vue'),
+      },
+      {
+        path: "/formgenerator",
+        name: "formgenerator",
+        component: () => import('@/views/FormGenerator.vue'),
+      },{
+        path: "/vendor_home",
+        name: "vendor_home",
+        component: () => import('@/views/VendorHome.vue'),
+      }
       // {
       //   path: "/login",
       //   name: "login",

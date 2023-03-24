@@ -1,7 +1,8 @@
 <template>
+  <div class="form-floating"> 
     <div class="login">
       <el-card>
-        <h2>Login</h2>
+        <h2>Log In</h2>
         <el-form
           class="login-form"
           :model="model"
@@ -10,14 +11,14 @@
           @submit.prevent="login"
         >
           <el-form-item prop="username">
-            <el-input v-model="model.username" placeholder="Username" prefix-icon="fas fa-user"></el-input>
+            <el-input v-model="model.username" placeholder="EMAIL" size="large"></el-input>
           </el-form-item>
           <el-form-item prop="password">
             <el-input
               v-model="model.password"
-              placeholder="Password"
+              placeholder="PASSWORD"
               type="password"
-              prefix-icon="fas fa-lock"
+              size="large"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -33,6 +34,7 @@
         </el-form>
       </el-card>
     </div>
+  </div>
   </template>
   
   <script>
@@ -153,12 +155,6 @@
   .login .el-card {
     padding-top: 0;
     padding-bottom: 30px;
-  }
-  h2 {
-    font-family: "Open Sans";
-    letter-spacing: 1px;
-    font-family: Roboto, sans-serif;
-    padding-bottom: 20px;
   }
   a {
     color: $teal;

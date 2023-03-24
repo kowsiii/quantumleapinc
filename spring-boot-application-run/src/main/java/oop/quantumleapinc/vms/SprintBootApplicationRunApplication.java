@@ -1,5 +1,5 @@
 
-package com.example;
+package oop.quantumleapinc.vms;
 
 
 import org.springframework.boot.SpringApplication;
