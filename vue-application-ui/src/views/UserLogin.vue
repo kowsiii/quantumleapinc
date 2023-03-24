@@ -183,7 +183,16 @@ export default {
     Field,
 
   },
-    created() {
+  computed: {
+    backgroundStyle() {
+      return {
+        "background-image": `url(${this.backgroundImageUrl})`,
+        "background-size": "cover",
+        "background-position": "center"
+      };
+    }
+  },
+  created() {
     if (this.$store.state.auth.status.loggedIn) {
       this.$router.push("/home");
     }
@@ -191,7 +200,7 @@ export default {
   methods: {
     handleLogin(user) {
       this.loading = true;
-      console.log(user)
+      console.log(user);
 
       this.$store.dispatch("auth/login", user).then(
         () => {
@@ -207,9 +216,9 @@ export default {
             error.toString();
         }
       );
-    },
+    }
   }
+};
 
-}
 
 </script>

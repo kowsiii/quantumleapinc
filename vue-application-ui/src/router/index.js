@@ -8,19 +8,14 @@ const routes = [
       component: () => import('@/views/UserLogin.vue'),
     },
     {
-        path: "/home",
-        name: "home",
+        path: "/admin_home",
+        name: "admin_home",
         component: () => import('@/views/AdminHome.vue'),
       },
       {
         path: "/register",
         name: "register",
         component: () => import('@/views/RegisterUser.vue'),
-      },
-      {
-        path: "/login",
-        name: "login",
-        component: () => import('@/components/LoginComponent.vue'),
       },
       {
         path: "/vendor",
@@ -36,7 +31,21 @@ const routes = [
         path: "/formgenerator",
         name: "formgenerator",
         component: () => import('@/views/FormGenerator.vue'),
-      },
+      },{
+        path: "/vendor_home",
+        name: "vendor_home",
+        component: () => import('@/views/VendorHome.vue'),
+      }
+      // {
+      //   path: "/login",
+      //   name: "login",
+      //   component: () => import('@/views/UserLogin.vue'),
+      // },
+    //   {
+    //     path: "/formbuilder",
+    //     name: "formbuilder",
+    //     component: () => import('@/views/FormBuilder.vue'),
+    //   },
 ]
 
 const router = createRouter({
