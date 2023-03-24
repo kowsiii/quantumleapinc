@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <AdminNavBar />
     <router-view />
     <div class="col-md-6">
       <div class="card card-container">
@@ -13,7 +13,7 @@
 </template>
   
   <script>
-  import Navbar from '../components/NavBar.vue';
+  import AdminNavBar from '../components/AdminNavBar.vue';
 
   /*export default {
     name: "AdminHome",
@@ -48,7 +48,7 @@
   export default {
     name: 'App',
     components: {
-      Navbar,
+      AdminNavBar,
     },
   };
   
