@@ -105,21 +105,21 @@ public class AuthController {
 
                         break;
 
-                    case "mod":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+                    case "approver":
+                        Role appRole = roleRepository.findByName(ERole.ROLE_APPROVER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
+                        roles.add(appRole);
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                        Role vendRole = roleRepository.findByName(ERole.ROLE_VENDOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
+                        roles.add(vendRole);
             }
             
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
+            //Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+            //    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            //roles.add(userRole);
         } else {
             throw new RuntimeException("Error: Role is not assigned.");
         }

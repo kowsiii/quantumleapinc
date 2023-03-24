@@ -6,8 +6,9 @@
 
   <div class="split right">
     <div class="center">
+      
  
-    <h1 style="font-weight: 600;">Welcome to<br/>Quantum Leap Inc.'s<br/>Vendor Management System</h1><br/>
+    <h1 style="font-size:40px; font-weight: 700;">Welcome to Quantum Leap Inc.'s Vendor Management System</h1><br/>
 
 <Form as="el-form" :validation-schema="schema" @submit="handleLogin">
   <!-- You can use the field component to wrap a 'el-form-item' component -->
@@ -17,7 +18,7 @@
   <Field name="username" v-slot="{ value, field, errorMessage }">
     <el-form-item :error="errorMessage" required>
       <div class="field">
-      <input type="email" id="email" placeholder=" "
+      <input type="email" id="email" placeholder=" " class="border-transparent focus:border-transparent focus:ring-0" required
         v-bind="field"
         :validate-event="false"
         :model-value="value"
@@ -31,7 +32,7 @@
   <Field name="password" v-slot="{ value, field, errorMessage }">
     <el-form-item :error="errorMessage" required>
       <div class="field">
-      <input type="password" id="password" placeholder=" "
+      <input type="password" id="password" placeholder=" " class="border-transparent focus:border-transparent focus:ring-0" required
         v-bind="field"
         :validate-event="false"
         :model-value="value"
@@ -47,18 +48,15 @@
       <a href="www.google.com">Forgot password?</a><br/>
       <a></a>
     </div>
-
+    <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
 
   </Form>
-  <br/>
-  <br/>
 
   </div>
 
 </div>
-
-
-
 
 </template>
 
@@ -108,8 +106,6 @@
 
 }
 
-/*.field:focus-within label,
-.field input:not(:placeholder-shown) label {*/
 .field input:focus + label,
 .field input:not(:placeholder-shown) + label  {
 
@@ -129,38 +125,15 @@
 
 
 input {
-  outline: none;
+  border: none;
   border-width:0px;
   height:60px;
   padding-top:15px;
   padding-left: 20px;
   width:100%;
+
 }
 
-
-
-
-div.el-input__wrapper {
-  border-radius:0px;
-}
-  
-  .login {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-button {
-    width: 100%;
-    margin-top: 40px;
-  }
-  .login-form {
-    width: 290px;
-  }
-  .forgot-password {
-    margin-top: 10px;
-  }
 
   </style>
   
@@ -175,6 +148,7 @@ export default {
         email:"",
         password:"",
         input:"",
+        message:"",
 
       }
     },
@@ -184,31 +158,42 @@ export default {
 
   },
   computed: {
-    backgroundStyle() {
-      return {
-        "background-image": `url(${this.backgroundImageUrl})`,
-        "background-size": "cover",
-        "background-position": "center"
-      };
-    }
+
   },
   created() {
     if (this.$store.state.auth.status.loggedIn) {
-      this.$router.push("/home");
+      var user = this.$store.state.auth.user;
+      console.log(user);
+      if (user.roles.includes("ROLE_ADMIN")) {
+        this.$router.push("/admin");
+      } else if (user.roles.includes("ROLE_APPROVER")) {
+        this.$router.push("/approver");
+      } else if (user.roles.includes("ROLE_VENDOR")) {
+        this.$router.push("/vendor");
+      }
+      
     }
   },
   methods: {
-    handleLogin(user) {
+    handleLogin(loggeduser) {
       this.loading = true;
-      console.log(user);
+      console.log("2");
 
-      this.$store.dispatch("auth/login", user).then(
+      this.$store.dispatch("auth/login", loggeduser).then(
         () => {
-          this.$router.push("/home");
+          // this.$router.push("/admin");
+          var user = this.$store.state.auth.user;
+          if (user.roles.includes("ROLE_ADMIN")) {
+            this.$router.push("/admin");
+          } else if (user.roles.includes("ROLE_APPROVER")) {
+            this.$router.push("/approver");
+          } else if (user.roles.includes("ROLE_VENDOR")) {
+            this.$router.push("/vendor");
+          }
         },
         (error) => {
           this.loading = false;
-          this.message =
+          this.message = "Username and password do not match"||
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
