@@ -14,8 +14,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Permissions")
-@SQLInsert(sql = "INSERT IGNORE INTO Permissions(permission_write, permission_read, modified_by) " +
-        "VALUES (?, ?, ?)" )
+@SQLInsert(sql = "INSERT INTO Permissions(permission_write, permission_read, modified_by) " +
+        "VALUES (true, true, lols)" )
 public class FormPermissions{
 
     @Id
