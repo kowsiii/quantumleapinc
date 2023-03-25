@@ -19,23 +19,13 @@ const routes = [
       },
       {
         path: "/vendor",
-        name: "vendor",
+        name: "vendor_home",
         component: () => import('@/views/VendorHome.vue'),
       },
       {
         path: "/formbuilder",
         name: "formbuilder",
         component: () => import('@/views/FormBuilder.vue'),
-      },
-      {
-        path: "/vendor_home",
-        name: "vendor_home",
-        component: () => import('@/views/VendorHome.vue'),
-      },
-      {
-        path: "/login",
-        name: "login1",
-        component: () => import('@/views/UserLogin.vue'),
       },
       {
         path: "/test",
