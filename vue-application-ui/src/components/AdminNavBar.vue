@@ -27,7 +27,7 @@ onMounted(() => {
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
           <li>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+            <a href="#" @click="logOut" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
           </li>
         </ul>
       </div>
@@ -64,5 +64,27 @@ onMounted(() => {
 <script>
 export default {
   name: "AdminNavBar",
+  methods: {
+    logOut() {
+      this.$store.dispatch("auth/logout").then(
+        () => {
+          console.log("User logged out successfully");
+          this.$router.push("/");
+        },
+        (error) => {
+          this.loading = false;
+          this.message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        }
+      );
+    },
+    registerUser() {
+      this.$router.push("/register");
+    }
+  }
 };
 </script>

@@ -1,6 +1,4 @@
 <template>
-    
-
     <div>
     <AdminNavBar />
     <router-view />
@@ -57,26 +55,7 @@
         }},
 
     methods: {
-        logOut() {
-            this.$store.dispatch("auth/logout",).then(
-            () => {
-            console.log("true");
-            this.$router.push("/");
-            },
-            (error) => {
-            this.loading = false;
-            this.message =
-                (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-                error.message ||
-                error.toString();
-            }
-        );
-    },
-        registerUser() {
-            this.$router.push("/register");
-        }
+       
   
   }}
   
