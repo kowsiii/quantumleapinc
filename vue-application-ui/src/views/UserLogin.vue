@@ -18,7 +18,10 @@
   <Field name="username" v-slot="{ value, field, errorMessage }">
     <el-form-item :error="errorMessage" required>
       <div class="field">
-      <input type="email" id="email" placeholder=" " class="border-transparent focus:border-transparent focus:ring-0" required
+
+        <div class="icon">
+      </div>
+        <input type="email" id="email" placeholder=" " class="border-transparent focus:border-transparent focus:ring-0" required
         v-bind="field"
         :validate-event="false"
         :model-value="value"
@@ -93,16 +96,19 @@
   position:relative;
   box-shadow: 1px 1px 10px rgb(238, 236, 236);
   padding: 3px;
+  display: flex;
+  align-items: center;
 }
 
 
 .field label {
   position: absolute;
   top:20px;
-  left:20px;
+  left:65px;
   color:lightgray;
   transition:all 0.2s ease;
   pointer-events: none;
+
 
 }
 
@@ -110,7 +116,7 @@
 .field input:not(:placeholder-shown) + label  {
 
   top: 7px;
-  left: 15px;
+  left: 45px;
   font-size: 10px;
   color: #777;
 }
@@ -132,8 +138,12 @@ input {
   padding-left: 20px;
   width:100%;
 
+
 }
 
+.icon {
+  width:30px;
+}
 
   </style>
   
