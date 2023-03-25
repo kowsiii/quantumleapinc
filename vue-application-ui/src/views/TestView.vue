@@ -1,39 +1,84 @@
+<script setup>
+import { ref } from "vue";
+
+const basicFields = ref(['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider', 'text']);
+
+const yuckyMeals = ref([
+  'Bat wing soup',
+  'Spicy Octopus',
+  'Anything from Taco Bell',
+]);
+</script>
+
 <template>
-    <div class="flex m-10">
-      <draggable class="dragArea list-group w-full" :list="list" @change="log">
-        <div
-          class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center"
-          v-for="element in list"
-          :key="element.name"
-        >
-          {{ element.name }}
-        </div>
-      </draggable>
-    </div>
+    <div class="split left">
+        <h5 class="text-xl font-bold dark:text-white">Basic Components</h5>
+   
+<!--Notice the group prop is the same on both <draggable>-->
+        <draggable v-model="basicFields" tag="ul" :group="{ name: 'fields', pull: 'clone', revertClone: true }" :animation="300">
+    <template #item="{ element: meal }">
+      <div class="formitem">{{ meal }}</div>
+    </template>
+</draggable>
+    </div><br/>
+
+    <div class="split right">
+        <h1>Terrible Foods</h1>
+        <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+<draggable v-model="yuckyMeals" tag="ul" group="fields" :animation="300">
+    
+  <template #item="{ element: meal }">
+    <li>{{ meal }}</li>
   </template>
-  <script>
-    import { defineComponent } from 'vue'
-    import draggable from 'vuedraggable'
-    export default defineComponent({
-      components: {
-        draggable,
-      },
-      data() {
+</draggable>
+</ul>
+    </div>
+ 
+
+</template>
+
+
+<script>
+import draggable from "vuedraggable";
+export default {
+    name: "TestView",
+    data () {
         return {
-          enabled: true,
-          list: [
-            { name: 'John', id: 1 },
-            { name: 'Joao', id: 2 },
-            { name: 'Jean', id: 3 },
-            { name: 'Gerard', id: 4 },
-          ],
-          dragging: false,
-        }
-      },
-      methods: {
-        log(event) {
-          console.log(event)
-        },
-      },
-    })
-  </script>
+
+        }}
+}
+</script>
+
+
+<style scoped>
+
+.split {
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  width: 30%;
+  background-color: lightgray;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  width: 70%;
+
+}
+
+.formitem {
+    background-color: aqua;
+}
+
+
+.drag-item {
+  background: blue;
+  margin: 10px 0;
+}
+</style>

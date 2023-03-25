@@ -1,26 +1,35 @@
+<script setup>
+import { ref } from "vue";
+
+const meals = ref([
+  'Hamburger',
+  'Pizza',
+  'Spaghetti',
+  'Tacos',
+  'Teriyaki Chicken',
+]);
+
+const yuckyMeals = ref([
+  'Bat wing soup',
+  'Spicy Octopus',
+  'Anything from Taco Bell',
+]);
+</script>
+
 <template>
   <div class="split left">
 
                 <div class="widget-cate">Basic Components</div>
-                <draggable tag="ul" :list="basicComponents" 
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
-                >
-                  <template v-for="(item, index) in basicComponents">
-                    <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" :key="index">
-                      <a>
-                        <i class="icon iconfont" :class="item.icon"></i>
-                        <span>{{item.name}}</span>
-                      </a>
-                    </li>
-                  </template>                
+                <draggable>  Hello           
                 </draggable>        
 
 
   </div>
   <div class="split right"></div>
+
+  <draggable>
+    
+  </draggable>
 </template>
 
 <script>
