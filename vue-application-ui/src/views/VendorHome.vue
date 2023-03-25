@@ -1,22 +1,5 @@
 <template>
-<div class="form_wrap"> 
-  <h2>Input Placeholder float to top example</h2>
-  <div class="input_wrap">
-    <input type="text" required />
-    <label>Your Name</label>
-
-  </div>
-</div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      inputValue: '',
-      isFocused: false
-    };
-  <div>
+<div>
     <VendorNavBar />
     <router-view />
     <div class="col-md-6">
@@ -25,12 +8,11 @@ export default {
       </div>
     </div>
   </div>
-  </template>
-  
-  <script>
-  import VendorNavBar from '../components/VendorNavBar.vue';
+</template>
 
-  export default {
+<script>
+ import VendorNavBar from '../components/VendorNavBar.vue';
+export default {
     name: "Vendorhome",
     components: {
       VendorNavBar,
@@ -38,7 +20,6 @@ export default {
    
   
   }
-};
 </script>
 
 <style scoped>
@@ -118,4 +99,5 @@ input:focus + label, input:valid + label{
 }
 
 input[type="text"]:focus {outline:none;}
+
 </style>
