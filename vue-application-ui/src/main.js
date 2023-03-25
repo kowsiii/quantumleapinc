@@ -16,6 +16,5 @@ createApp(App)
   .use(router)
   .use(store)
   .use(ElementPlus)
-
   //.component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

@@ -1,30 +1,31 @@
 <template>
-  <div id="app">
-    <div class="fm-header">
-      <img class="fm-logo" src="./assets/logo.svg">
-      <div class="fm-title" @click="handleHome">Title</div>
+  <div class="split left">
+
+                <div class="widget-cate">Basic Components</div>
+                <draggable tag="ul" :list="basicComponents" 
+                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                  @end="handleMoveEnd"
+                  @start="handleMoveStart"
+                  :move="handleMove"
+                >
+                  <template v-for="(item, index) in basicComponents">
+                    <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>                
+                </draggable>        
 
 
-      <div class="fm-link">
-
- 
-
-        <div class="action-item">
-          <el-dropdown trigger="click" @command="handleLangCommand">
-            <span class="el-dropdown-link">
-    
-            </span>
-
-          </el-dropdown>
-        </div>
-      </div>
-    </div>
-    <div  class="fm-container"><router-view/></div>
   </div>
+  <div class="split right"></div>
 </template>
 
 <script>
-
+import {basicComponents, layoutComponents, advanceComponents} from '../components/componentsConfig.js';
+import draggable from 'vuedraggable';
 export default {
   name: 'FormBuilder',
   methods: {
@@ -39,6 +40,31 @@ export default {
 </script>
 
 <style lang="scss">
+.split {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  width: 30%;
+  background-color: lightgray;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  width: 70%;
+
+}
+
+
+
+
+
 .fm-header{
   height: 50px;
   box-shadow: 0 2px 10px rgba(70,160,252, 0.6);
