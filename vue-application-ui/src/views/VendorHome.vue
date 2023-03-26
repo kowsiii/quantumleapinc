@@ -4,7 +4,7 @@
       <NavBar :is-vendor="true"/>
     </nav>
     <h1 style="margin-top: 135px;">My Workflows</h1>
-    <MyWorkflows />
+    <MyWorkflows :status="status"/>
   </div>
 </template>
 
@@ -20,8 +20,24 @@ export default {
   },
   mounted() {
     document.title = "My Workflow"
-  }
-}
+  },
+  watch: {
+    $route: {
+      handler(newRoute){
+        if (newRoute.path === '/vendor/assigned') {
+          this.status = 'assigned';
+        } else if (newRoute.path === '/vendor/completed'){
+          this.status = "completed";
+        } else if (newRoute.path === '/vendor/inprogress'){
+          this.status = "inprogress";
+        } else {
+          this.status = "all";
+        }
+      },
+      immediate: true, // handle initial route on component mount
+    },
+  },
+};
 </script>
 
 <!--<style scoped>
