@@ -13,7 +13,7 @@ onMounted(() => {
   <div v-if="isVendor" class="container flex flex-wrap items-center justify-between mx-auto">
   <router-link to="/vendor">
     <a class="flex items-center">
-      <img src="../assets/company_logo.jpg" class="h-20 mr-3 sm:h-15" alt="Flowbite Logo" />
+      <img src="../assets/company_logo.jpg" class="h-20 mr-3 sm:h-15" alt="Quantum Leap Incoporation Logo" />
     </a>
   </router-link>
   <div class="flex items-center md:order-2">
@@ -24,6 +24,7 @@ onMounted(() => {
       <!-- Dropdown menu -->
       <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
+          <!--This part need to get the user data-->
           <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
           <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
         </div>
@@ -38,7 +39,6 @@ onMounted(() => {
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
     </button>
   </div>
-
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
     <ul class="flex flex-col p-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>
@@ -47,13 +47,15 @@ onMounted(() => {
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                   <li>
-                    <router-link to="/assigned" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Assigned</router-link>
+                    <!--style="color: #1a57dd;"-->
+                    <!--exact-active-class="bg-blue-500 text-white"-->
+                    <router-link to="/vendor/assigned" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Assigned</router-link>
                   </li>
                   <li>
-                    <router-link to="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">In Progress</router-link>
+                    <router-link to="/vendor/inprogress" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">In Progress</router-link>
                   </li>
                   <li>
-                    <router-link to="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Completed</router-link>
+                    <router-link to="/vendor/completed" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Completed</router-link>
                   </li>
                 </ul>
             </div>
@@ -70,7 +72,7 @@ onMounted(() => {
   <div v-else class="container flex flex-wrap items-center justify-between mx-auto">
   <router-link to="/admin">
     <a class="flex items-center">
-      <img src="../assets/company_logo.jpg" class="h-20 mr-3 sm:h-15" alt="Flowbite Logo" />
+      <img src="../assets/company_logo.jpg" class="h-20 mr-3 sm:h-15" alt="Quantum Leap Incoporation Logo" />
     </a>
   </router-link>
   <div class="flex items-center md:order-2">
@@ -81,6 +83,7 @@ onMounted(() => {
       <!-- Dropdown menu -->
       <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
+          <!--This part need to get the user data-->
           <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
           <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
         </div>
@@ -95,7 +98,6 @@ onMounted(() => {
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
     </button>
   </div>
-
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
     <ul class="flex flex-col p-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>

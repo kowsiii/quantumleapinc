@@ -15,10 +15,11 @@
                     </thead>
                     <tbody>
                         <!--For assigned records-->
-                        <template v-if="isStatus === 'assigned'">
+                        <template v-if="status === 'assigned'">
                             <!--For loop tr-->
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <!--This part need to change according to the workflow data-->
                                     <h5 style="font-size:17px; font-weight:bold;">Workflow #1</h5>
                                     <section class="my-2 p-2" style="background-color:#e5eff5;">
                                         <p class="align-middle" style="font-size: 14px;"> <span style="font-weight:bold;">Form:</span> Form Name</p>
@@ -34,10 +35,11 @@
                         </template>
 
                         <!--For In Progress records-->
-                        <template v-if="isStatus === 'in progress'">
+                        <template v-if="status === 'inprogress'">
                             <!--For loop tr-->
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <!--This part need to change according to the workflow data-->
                                     <h5 style="font-size:17px; font-weight:bold;">Workflow #1</h5>
                                     <section class="my-2 p-2" style="background-color:#e5eff5;">
                                         <p class="align-middle" style="font-size: 14px;"> <span style="font-weight:bold;">Form:</span> Form Name</p>
@@ -53,10 +55,11 @@
                         </template>
 
                         <!--For Completed records-->
-                        <template v-if="isStatus === 'completed'">
+                        <template v-if="status === 'completed'">
                             <!--For loop tr-->
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <!--This part need to change according to the workflow data-->
                                     <h5 style="font-size:17px; font-weight:bold;">Workflow #1</h5>
                                     <section class="my-2 p-2" style="background-color:#e5eff5;">
                                         <p class="align-middle" style="font-size: 14px;"> <span style="font-weight:bold;">Form:</span> Form Name</p>
@@ -72,10 +75,11 @@
                         </template>
 
                          <!--For all the records-->
-                         <template v-if="isStatus === 'all'">
+                         <template v-if="status === 'all'">
                             <!--For loop tr-->
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <!--This part need to change according to the workflow data-->
                                     <h5 style="font-size:17px; font-weight:bold;">Workflow #1</h5>
                                     <section class="my-2 p-2" style="background-color:#e5eff5;">
                                         <p class="align-middle" style="font-size: 14px;"> <span style="font-weight:bold;">Form:</span> Form Name</p>
@@ -85,6 +89,7 @@
                                 </th>
                                 <td class="px-6 py-4">
                                     <!--<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>-->
+                                    
                                     <!--Need to check the status of the record to print the button accordingly-->
                                     <button class="btn btn-primary px-3 py-2 m-2" role="button" value="">View Details</button>
                                 </td>
@@ -102,13 +107,13 @@
 export default {
   name: 'MyWorkflows',
   props: {
-    isStatus: {
-      type: String,
-      default: "all"
-    }
-  }
+    status: {
+        type: String,
+        required: true,
+    },
+  },
   // Component options go here
-}
+};
 </script>
 
 <style>

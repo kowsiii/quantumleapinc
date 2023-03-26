@@ -33,8 +33,18 @@ const routes = [
         component: () => import('@/views/TestView.vue'),
       },
       {
-        path: "/assigned",
+        path: "/vendor/assigned",
         name: "assigned",
+        component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/vendor/completed",
+        name: "completed",
+        component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/vendor/inprogress",
+        name: "inprogress",
         component: () => import('@/views/VendorHome.vue'),
       }
     //   {
