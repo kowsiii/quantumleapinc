@@ -9,7 +9,7 @@ const routes = [
     },
     {
         path: "/admin",
-        name: "admin_home",
+        name: "AdminHome",
         component: () => import('@/views/AdminHome.vue'),
       },
       {
@@ -19,7 +19,7 @@ const routes = [
       },
       {
         path: "/vendor",
-        name: "vendor_home",
+        name: "VendorHome",
         component: () => import('@/views/VendorHome.vue'),
       },
       {
