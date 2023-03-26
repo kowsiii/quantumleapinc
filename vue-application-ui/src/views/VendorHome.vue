@@ -1,6 +1,6 @@
 <template>
 <div>
-    <VendorNavBar />
+    <NavBar :is-vendor="true"/>
     <router-view />
     <div class="col-md-6">
       <div class="card card-container">
@@ -11,15 +11,13 @@
 </template>
 
 <script>
- import VendorNavBar from '../components/VendorNavBar.vue';
+import NavBar from '../components/NavBar.vue';
 export default {
-    name: "Vendorhome",
-    components: {
-      VendorNavBar,
-    },
-   
-  
-  }
+  name: "Vendorhome",
+  components: {
+    NavBar
+  },
+}
 </script>
 
 <style scoped>
