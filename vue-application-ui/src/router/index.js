@@ -32,6 +32,11 @@ const routes = [
         name: "test",
         component: () => import('@/views/TestView.vue'),
       },
+      {
+        path: "/assigned",
+        name: "assigned",
+        component: () => import('@/views/VendorHome.vue'),
+      }
     //   {
     //     path: "/formbuilder",
     //     name: "formbuilder",
