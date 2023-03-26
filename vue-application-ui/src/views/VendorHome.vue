@@ -1,26 +1,30 @@
 <template>
-<div>
-    <NavBar :is-vendor="true"/>
-    <router-view />
-    <div class="col-md-6">
-      <div class="card card-container">
-        Vendor!!
-      </div>
-    </div>
+  <div>
+    <nav>
+      <NavBar :is-vendor="true"/>
+    </nav>
+    <h1 style="margin-top: 135px;">My Workflows</h1>
+    <MyWorkflows />
   </div>
 </template>
 
 <script>
 import NavBar from '../components/NavBar.vue';
+import MyWorkflows from '../components/MyWorkflows.vue';
+
 export default {
   name: "VendorHome",
   components: {
-    NavBar
+    NavBar,
+    MyWorkflows
   },
+  mounted() {
+    document.title = "My Workflow"
+  }
 }
 </script>
 
-<style scoped>
+<!--<style scoped>
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -98,4 +102,4 @@ input:focus + label, input:valid + label{
 
 input[type="text"]:focus {outline:none;}
 
-</style>
+</style>-->
