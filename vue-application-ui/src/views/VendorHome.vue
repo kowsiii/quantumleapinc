@@ -13,20 +13,21 @@ export default {
     NavBar,
     MyWorkflows,
   },
-  mounted() {
-    document.title = "My Workflow";
-  },
   watch: {
     $route: {
       handler(newRoute) {
         if (newRoute.path === "/vendor/assigned") {
           this.status = "assigned";
+          document.title = "Assigned";
         } else if (newRoute.path === "/vendor/completed") {
           this.status = "completed";
+          document.title = "Completed";
         } else if (newRoute.path === "/vendor/inprogress") {
           this.status = "inprogress";
+          document.title = "In Progress";
         } else if (newRoute.path === "/vendor") {
           this.status = "all";
+          document.title = "My Workflows";
         }
       },
       immediate: true, // handle initial route on component mount
@@ -34,83 +35,3 @@ export default {
   },
 };
 </script>
-
-<!--<style scoped>
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-h2 {font-size:16px; font-weight:normal;
-  margin-bottom:20px;
-  width:500px; height:50px; background:#F1F2F4;  
-  position:absolute; top:0px; left:0px;margin: 0px;
-  padding: 18px;
-  text-align: center;
-}
-body {
-  background: url(http://andrahand.com/img/back1.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-
-.form_wrap {
-  height: 300px;
-  width: 500px;
-  background: white;
-  margin: 50px auto;
-  padding: 125px 0px 0px 100px;
-  outline: 5px solid rgba(0,0,0,0.1);
-  position:relative;
-}
-
-
-/* Input form Style */
-
-input[type="text"] {
-  border: 2px solid #afbdcf;
-  border-radius: 5px;
-  height: 47px;
-  width:300px;
-  color: #000000;
-  font-size: 14px;
-  padding-left: 20px;
-  box-shadow: none; 
-  position:relative; 
-}
-
-/* Label style after Input feild is in focus. Can also use input:focus ~ label to select sibling. */
-
-input:focus + label, input:valid + label{
-  font-size: 12px;
-  color: #afbdcf;
-  top: -5px;
-  left:10px;
-  background: #ffffff;
-  padding: 0px 5px 0px 5px;
-}
-
-.input_wrap {width:auto; height:auto; position:relative;
-}
-
-.input_wrap label {
-  font-size:16px;
-  color: #afbdcf;
-  padding: 14px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-  pointer-events: none;
-
-}
-
-input[type="text"]:focus {outline:none;}
-
-</style>-->

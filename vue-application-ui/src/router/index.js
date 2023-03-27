@@ -13,14 +13,19 @@ const routes = [
         component: () => import('@/views/AdminHome.vue'),
       },
       {
-        path: "/register",
-        name: "register",
-        component: () => import('@/views/RegisterUser.vue'),
+        path: "/admin/assigned",
+        name: "AdminAssigned",
+        component: () => import('@/views/AdminHome.vue'),
       },
       {
-        path: "/vendor",
-        name: "VendorHome",
-        component: () => import('@/views/VendorHome.vue'),
+        path: "/admin/inprogress",
+        name: "AdminInProgress",
+        component: () => import('@/views/AdminHome.vue'),
+      },
+      {
+        path: "/admin/completed",
+        name: "AdminCompleted",
+        component: () => import('@/views/AdminHome.vue'),
       },
       {
         path: "/formbuilder",
@@ -28,25 +33,36 @@ const routes = [
         component: () => import('@/views/FormBuilder.vue'),
       },
       {
-        path: "/test",
-        name: "test",
-        component: () => import('@/views/TestView.vue'),
-      },
-      {
-        path: "/vendor/assigned",
-        name: "assigned",
+        path: "/vendor",
+        name: "VendorHome",
         component: () => import('@/views/VendorHome.vue'),
       },
       {
-        path: "/vendor/completed",
-        name: "completed",
+        path: "/vendor/assigned",
+        name: "VendorAssigned",
         component: () => import('@/views/VendorHome.vue'),
       },
       {
         path: "/vendor/inprogress",
-        name: "inprogress",
+        name: "VendorInProgress",
         component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/vendor/completed",
+        name: "VendorCompleted",
+        component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/register",
+        name: "register",
+        component: () => import('@/views/RegisterUser.vue'),
+      },
+      {
+        path: "/test",
+        name: "test",
+        component: () => import('@/views/TestView.vue'),
       }
+     
     //   {
     //     path: "/formbuilder",
     //     name: "formbuilder",
