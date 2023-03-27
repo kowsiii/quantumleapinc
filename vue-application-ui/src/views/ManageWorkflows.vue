@@ -20,5 +20,9 @@ export default {
     NavBar,
     AllWorkflows
   },
-}
+  created() {
+    document.title = "Manage Workflows";
+  }
+
+};
 </script>

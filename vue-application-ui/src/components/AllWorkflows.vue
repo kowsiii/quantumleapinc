@@ -38,7 +38,7 @@
                     <router-link to="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Assignment</router-link>
                   </li>
                   <li>
-                    <router-link to="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Status</router-link>
+                    <router-link to="/manageworkflows/workflow/workflowstatus" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Status</router-link>
                   </li>
                 </ul>
               </div>
