@@ -1,17 +1,17 @@
 <template>
   <NavBar :is-vendor="true" />
-  <MyWorkflows :status="status" />
+  <AssignedWorkflows :status="status" />
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
-import MyWorkflows from "../components/MyWorkflows.vue";
+import AssignedWorkflows from "../components/AssignedWorkflows.vue";
 
 export default {
   name: "VendorHome",
   components: {
     NavBar,
-    MyWorkflows,
+    AssignedWorkflows
   },
   watch: {
     $route: {
