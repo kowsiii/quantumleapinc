@@ -1,36 +1,31 @@
 <template>
-  <div>
-    <nav>
-      <NavBar :is-vendor="true"/>
-    </nav>
-    <h1 style="margin-top: 135px;">My Workflows</h1>
-    <MyWorkflows :status="status"/>
-  </div>
+  <NavBar :is-vendor="true" />
+  <MyWorkflows :status="status" />
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue';
-import MyWorkflows from '../components/MyWorkflows.vue';
+import NavBar from "../components/NavBar.vue";
+import MyWorkflows from "../components/MyWorkflows.vue";
 
 export default {
   name: "VendorHome",
   components: {
     NavBar,
-    MyWorkflows
+    MyWorkflows,
   },
   mounted() {
-    document.title = "My Workflow"
+    document.title = "My Workflow";
   },
   watch: {
     $route: {
-      handler(newRoute){
-        if (newRoute.path === '/vendor/assigned') {
-          this.status = 'assigned';
-        } else if (newRoute.path === '/vendor/completed'){
+      handler(newRoute) {
+        if (newRoute.path === "/vendor/assigned") {
+          this.status = "assigned";
+        } else if (newRoute.path === "/vendor/completed") {
           this.status = "completed";
-        } else if (newRoute.path === '/vendor/inprogress'){
+        } else if (newRoute.path === "/vendor/inprogress") {
           this.status = "inprogress";
-        } else {
+        } else if (newRoute.path === "/vendor") {
           this.status = "all";
         }
       },
