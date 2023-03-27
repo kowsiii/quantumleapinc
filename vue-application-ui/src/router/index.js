@@ -33,6 +33,16 @@ const routes = [
         component: () => import('@/views/FormBuilder.vue'),
       },
       {
+        path: "/usermanagement",
+        name: "UserManagement",
+        component: () => import('@/views/UserManagement.vue'),
+      },
+      {
+        path: "/manageworkflows",
+        name: "ManageWorkflows",
+        component: () => import('@/views/ManageWorkflows.vue'),
+      },
+      {
         path: "/vendor",
         name: "VendorHome",
         component: () => import('@/views/VendorHome.vue'),

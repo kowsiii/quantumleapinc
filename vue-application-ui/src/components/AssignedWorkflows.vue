@@ -146,7 +146,7 @@
 
 <script>
 export default {
-  name: "MyWorkflows",
+  name: "AssignedWorkflows",
   props: {
     status: {
       type: String,
