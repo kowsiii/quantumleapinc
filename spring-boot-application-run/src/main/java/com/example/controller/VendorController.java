@@ -17,6 +17,8 @@ import com.example.entity.User;
 import com.example.entity.Vendor;
 import com.example.service.UserService;
 import com.example.service.VendorService;
+
+import jakarta.transaction.Transactional;
 @RestController
 @RequestMapping("/vendor")
 public class VendorController {
@@ -33,8 +35,14 @@ public class VendorController {
     }
 
     @PutMapping("/editVendor")
-    public Vendor editVendor(@RequestBody Vendor e){
-        return service.saveVendor(e);
+    public String editVendor(@RequestBody Vendor e){
+        return service.editVendor(e);
+    }
+    
+    @Transactional
+    @DeleteMapping("/deleteVendor/{vendorId}")
+    public String deleteVendor(@PathVariable int vendorId){
+        return service.deleteVendor(vendorId);
     }
 
 

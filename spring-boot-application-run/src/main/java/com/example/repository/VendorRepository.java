@@ -12,6 +12,9 @@ public interface VendorRepository extends UserRepository {
 
     Vendor findByVendorId(int vendorId);
 
+
+   
+
     // User findByEmail(String email);
     
 }

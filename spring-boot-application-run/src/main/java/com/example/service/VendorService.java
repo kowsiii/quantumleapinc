@@ -33,10 +33,14 @@ public class VendorService {
 
     public String editVendor(Vendor e){
         Vendor update  = repository.findByVendorId(e.getVendorId());
-        if (update == null){
+        if (ObjectUtils.isEmpty(update)){
             returnMsg m = new returnMsg(400,"error");
             return new Gson().toJson(m);
         }
+        System.out.println(e.getVendorId());
+        System.out.println(e.getId());
+        System.out.println("hello");
+        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
         update.setId(e.getId());
         update.setName(e.getName());
         update.setPassword(e.getPassword());
@@ -44,6 +48,20 @@ public class VendorService {
         update.setVendorRegNo(e.getVendorRegNo());
         repository.save(e);
         return new Gson().toJson(e) ;
+    }
+
+    public String deleteVendor(int vendorId){
+        Vendor update  = repository.findByVendorId(vendorId);
+        if (ObjectUtils.isEmpty(update)){
+            returnMsg m = new returnMsg(400,"No such vendor");
+            return new Gson().toJson(m);
+        }
+        System.out.println(vendorId);
+        System.out.println("/////////////////////////////");
+        repository.delete(update);
+        //repository.deleteByVendorId(vendorId);
+        returnMsg m = new returnMsg(200,"deleted");
+        return new Gson().toJson(m) ;
     }
 
 }
