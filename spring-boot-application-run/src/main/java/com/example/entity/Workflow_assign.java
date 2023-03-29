@@ -17,6 +17,7 @@ public class Workflow_assign {
     @Id
     @GeneratedValue
     private int workFlow_assign_id;
+    private int workFlow_id;
     // @Column(name ="v_RegNo")
     private int vendorId;
     private int assignedBy;//employeeId
