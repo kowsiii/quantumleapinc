@@ -54,5 +54,10 @@ public class Workflow_assignService {
         
     }
 
+    //get workflow assigned to specific vendor
+    public List<Workflow_assign> getVendorWorkflows(int vendorId){
+        return repository.findAllByVendorId(vendorId);
+    }
+
 }
 //entity -> repo -> service -> controller

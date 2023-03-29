@@ -32,6 +32,12 @@ public class Workflow_assignController {
         return service.getAllAssignedWorkflows();
     }
 
+    @GetMapping("/getByVendorId/{vendorId}")
+    public List<Workflow_assign> getVendorWorkflows(@PathVariable int vendorId){
+        return service.getVendorWorkflows(vendorId);
+    }
+
+
     @PostMapping("/assignWorkflow")
     public Workflow_assign assignWorkflow(@RequestBody Workflow_assign w){
         return service.assignWorkflow(w);
