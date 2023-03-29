@@ -25,5 +25,8 @@ public class Vendor extends User {
     // private int vendorTelephone;
     // @Column(name ="lineOfBusiness")
     // // private String vendorLob;
+    public Vendor orElse(Object object) {
+        return null;
+    }
 
 }
