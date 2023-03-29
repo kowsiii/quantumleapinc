@@ -23,4 +23,10 @@ public class Workflow_assign {
     private int assignedBy;//employeeId
     private String workFlowName;
     private String workFlowJsonString;
+    private String status;
+    
+    public String getStatus(){
+        return this.status;
+    }
 }
+

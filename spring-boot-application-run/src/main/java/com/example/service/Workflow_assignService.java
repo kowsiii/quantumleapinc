@@ -36,5 +36,23 @@ public class Workflow_assignService {
         return repository.save(w);
     }
 
+    //change workflow status
+    public String updateWorkflowStatus(int workFlow_assign_id){
+        Workflow_assign e = repository.findById(workFlow_assign_id).orElse(null);
+        System.out.println(e);
+        if(e==null){
+            returnMsg m = new returnMsg(400,"error");
+            return new Gson().toJson(m);
+        }
+        if(e.getStatus().equals("incomplete")){
+            e.setStatus("complete");
+        } else{
+            e.setStatus("incomplete");
+        };
+        repository.save(e);
+        return new Gson().toJson(e);
+        
+    }
+
 }
 //entity -> repo -> service -> controller

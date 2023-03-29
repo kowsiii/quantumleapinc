@@ -8,7 +8,7 @@ import com.example.entity.Workflow_assign;
 
 @Repository
 public interface Workflow_assignRepository extends JpaRepository<Workflow_assign,Integer> {
-
+    
     // User findByEmail(String email);
     
 }
