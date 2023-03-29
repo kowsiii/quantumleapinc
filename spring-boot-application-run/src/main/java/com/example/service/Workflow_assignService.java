@@ -37,7 +37,7 @@ public class Workflow_assignService {
     }
 
     //change workflow status
-    public String updateWorkflowStatus(int workFlow_assign_id){
+    public String updateWorkflowStatus(int workFlow_assign_id,String adminMessage){
         Workflow_assign e = repository.findById(workFlow_assign_id).orElse(null);
         System.out.println(e);
         if(e==null){
@@ -47,7 +47,7 @@ public class Workflow_assignService {
         if(e.getStatus().equals("incomplete")){
             e.setStatus("complete");
         } else{
-            e.setStatus("incomplete");
+            e.setStatus(adminMessage);
         };
         repository.save(e);
         return new Gson().toJson(e);

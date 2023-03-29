@@ -37,9 +37,9 @@ public class Workflow_assignController {
         return service.assignWorkflow(w);
     }
 
-    @PutMapping("/updateStatus/{workFlowAssign_id}")
-    public String updateWorkflowStatus(@PathVariable int workFlowAssign_id){
-        return service.updateWorkflowStatus(workFlowAssign_id);
+    @PutMapping("/updateStatus/{workFlowAssign_id}/{adminMessage}")
+    public String updateWorkflowStatus(@PathVariable int workFlowAssign_id, @PathVariable String adminMessage){
+        return service.updateWorkflowStatus(workFlowAssign_id,adminMessage);
     }
 
 
