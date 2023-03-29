@@ -2,12 +2,15 @@
 package com.example;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.event.EventListener;
 
 import com.example.entity.FormPermissions;
-
+import com.example.service.EmailSenderService;
 
 
 @ComponentScan
@@ -27,7 +30,13 @@ public class SprintBootApplicationRunApplication {
 		//private boolean permissionWrite;
 		//private boolean permissionRead;
 		//private String modifiedBy;
-
+	}
+	@Autowired
+	private EmailSenderService senderService;
+	
+	@EventListener(ApplicationReadyEvent.class)
+	public void sendMail(){
+		senderService.sendEmail("glennhamtest@gmail.com","test","hello");
 	}
 
 }

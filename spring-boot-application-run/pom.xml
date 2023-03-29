@@ -61,6 +61,13 @@
         <artifactId>spring-boot-devtools</artifactId>
         <optional>true</optional>
     </dependency>
+	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		
+				<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -71,5 +78,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
