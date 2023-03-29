@@ -15,6 +15,7 @@ public class Vendor extends User {
     private int vendorId;
     // @Column(name ="v_RegNo")
     private int vendorRegNo;
+    private String email;
     // @Column(name ="poc")
     // private String vendorPoc;
     // @Column(name ="vendorEmail")
