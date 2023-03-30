@@ -12,7 +12,6 @@ import lombok.Setter;
 @Table(name = "Employee")
 public class Employee extends User {
     // @Column(name ="v_UserId")
-    private int employeeUserId;
     // @Column(name ="v_RegNo")
     private String employeeId;//is it needed?
     private String employeeName;

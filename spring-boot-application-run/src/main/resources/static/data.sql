@@ -1,0 +1,1 @@
+INSERT INTO `vendor` (`id`, `name`, `password`, `email`, `vendor_id`, `vendor_reg_no`) VALUES (1,'Glenn', 'testpassord', 'glenn-ham@outlook.com', 1, 123);
