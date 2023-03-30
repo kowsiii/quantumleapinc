@@ -14,7 +14,7 @@ public class Employee extends User {
     // @Column(name ="v_UserId")
     // @Column(name ="v_RegNo")
     private String employeeId;//is it needed?
-    private String employeeName;
+    //private String employeeName;
     private String employeeType;
     private int employeeContactNo;
 }
