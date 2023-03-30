@@ -1,6 +1,6 @@
 export const basicComponents = [
   {
-    type: 'input',
+    type: 'Text',
     icon: 'icon-input',
     options: {
       width: '100%',
@@ -8,12 +8,14 @@ export const basicComponents = [
       required: false,
       dataType: 'string',
       pattern: '',
-      placeholder: '',
+      placeholder: '' ,
       disabled: false,
+      label: '' ,
+      description:''
     },
   },
   {
-    type: 'textarea',
+    type: 'Textarea',
     icon: 'icon-diy-com-textarea',
     options: {
       width: '100%',
@@ -22,10 +24,12 @@ export const basicComponents = [
       disabled: false,
       pattern: '',
       placeholder: '',
+      label: '',
+      description:'' 
     },
   },
   {
-    type: 'number',
+    type: 'Number',
     icon: 'icon-number',
     options: {
       width: '',
@@ -39,7 +43,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'radio',
+    type: 'Radio',
     icon: 'icon-radio-active',
     options: {
       inline: false,
@@ -72,7 +76,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'checkbox',
+    type: 'Checkbox',
     icon: 'icon-check-box',
     options: {
       inline: false,
@@ -102,7 +106,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'time',
+    type: 'Time',
     icon: 'icon-time',
     options: {
       defaultValue: '21:19:56',
@@ -121,7 +125,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'date',
+    type: 'Date',
     icon: 'icon-date',
     options: {
       defaultValue: '',
@@ -151,7 +155,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'color',
+    type: 'Email',
     icon: 'icon-color',
     options: {
       defaultValue: '',
@@ -161,7 +165,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'select',
+    type: 'Select',
     icon: 'icon-select',
     options: {
       defaultValue: '',
@@ -194,7 +198,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'switch',
+    type: 'Toggle',
     icon: 'icon-switch',
     options: {
       defaultValue: false,
@@ -203,7 +207,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'slider',
+    type: 'Slider',
     icon: 'icon-slider',
     options: {
       defaultValue: 0,

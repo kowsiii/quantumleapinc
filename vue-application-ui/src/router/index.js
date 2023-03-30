@@ -77,6 +77,11 @@ const routes = [
         path: "/test",
         name: "test",
         component: () => import('@/views/TestView.vue'),
+      },
+      {
+        path: "/text",
+        name: "text",
+        component: () => import('@/components/formitems/EmailInput.vue'),
       }
      
     //   {
