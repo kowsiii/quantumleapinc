@@ -5,7 +5,11 @@ import router from "./router";
 import store from "./store";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './index.css'
+import './index.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import '@fortawesome/fontawesome-free/css/all.css'
 
 //import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -13,10 +17,11 @@ import './index.css'
 //import { FontAwesomeIcon } from './plugins/font-awesome'
 // add this
 
+library.add(fas)
 
 createApp(App)
   .use(router)
   .use(store)
   .use(ElementPlus)
-  //.component("font-awesome-icon", FontAwesomeIcon)
+  .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

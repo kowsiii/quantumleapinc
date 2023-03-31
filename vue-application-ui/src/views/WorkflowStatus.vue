@@ -6,19 +6,19 @@
                 <h4 class="text-2xl font-bold dark:text-white">Workflow Status</h4>
             </div>
         </div>
-        <Workflow />
+        <WorkflowsProgress />
     </div>
 </template>
 
 <script>
 import  NavBar from "../components/NavBar.vue";
-import Workflow from "../components/Workflows.vue";
+import WorkflowsProgress from "../components/WorkflowsProgress.vue";
 
 export default {
   name: "WorkflowStatus",
   components: {
     NavBar,
-    Workflow
+    WorkflowsProgress
   }
 };
 </script>
