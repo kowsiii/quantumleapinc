@@ -19,6 +19,9 @@ export default {
   components: {
     NavBar,
     WorkflowsProgress
+  },
+  created() {
+    document.title = "Workflow Status";
   }
 };
 </script>
