@@ -35,7 +35,7 @@
               <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                 <ul class="py-2" aria-labelledby="dropdownButton">
                   <li>
-                    <router-link to="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Assignment</router-link>
+                    <router-link to="/manageworkflows/workflow/workflowassignment" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Assignment</router-link>
                   </li>
                   <li>
                     <router-link to="/manageworkflows/workflow/workflowstatus" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Status</router-link>
