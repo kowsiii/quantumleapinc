@@ -1,6 +1,8 @@
 package oop.quantumleapinc.vms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -10,25 +12,28 @@ import java.util.Set;
 @Entity
 @Table(name = "users",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = "username"),
-                //@UniqueConstraint(columnNames = "email")
+                @UniqueConstraint(columnNames = "username")
         })
+@JsonIgnoreProperties({"password"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 255)
+    @Email
+    @Column(nullable=false, unique=true)
     private String username;
 
-//    @NotBlank
-//    @Size(max = 50)
-//    @Email
-//    private String email;
+    @NotBlank
+    @Size(max = 255)
+    @Column(nullable=false, unique=false)
+    private String name;
 
     @NotBlank
-    @Size(max = 120)
+    @Size(max = 255)
+    @Column(nullable=false, unique=false)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -40,15 +45,10 @@ public class User {
     public User() {
     }
 
-//    public User(String username, String email, String password) {
-//        this.username = username;
-//        this.email = email;
-//        this.password = password;
-//    }
-
-    public User(String username, String password) {
+    public User(String username, String password, String name) {
         this.username = username;
         this.password = password;
+        this.name = name;
     }
 
     public Long getId() {
@@ -67,13 +67,13 @@ public class User {
         this.username = username;
     }
 
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPassword() {
         return password;

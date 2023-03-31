@@ -1,22 +1,22 @@
 package oop.quantumleapinc.vms.login.payload.request;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-
 public class SignupRequest {
     @NotBlank
+    @Size(min = 3, max = 255)
     @Email
-    @Size(min = 3, max = 50)
     private String username;
 
-    // @NotBlank
-    // @Size(max = 50)
-    // @Email
-    // private String email;
+    @NotBlank
+    @Size(max = 255)
+    @Column(nullable=false, unique=false)
+    private String name;
 
-    //private Set<String> role;
+    // private Set<String> role;
     private String role;
 
     @NotBlank
@@ -31,13 +31,13 @@ public class SignupRequest {
         this.username = username;
     }
 
-    // public String getEmail() {
-    //     return email;
-    // }
+    public String getName() {
+        return name;
+    }
 
-    // public void setEmail(String email) {
-    //     this.email = email;
-    // }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPassword() {
         return password;
@@ -62,5 +62,4 @@ public class SignupRequest {
     public void setRole(String role) {
         this.role = role;
     }
-
 }
