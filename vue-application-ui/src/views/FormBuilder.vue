@@ -64,8 +64,17 @@ import { basicComponents } from "../components/formitems/componentsConfig";
         </div>
 
         <div class="split centre">
+            <div style="text-align:right; padding:15px 15px 0px 0px">
+                <button type="button" @click="renderForm" class="focus:outline-none text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg text-sm px-3 py-2 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Render</button>
+
+            <button type="button" @click="saveForm" class="focus:outline-none text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 rounded-lg text-sm px-3 py-2 mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save</button>
+        </div>
+       <div style="display:flex;align-items: center;"> <step-input :rep="steps" :selected="selectedpage" @changepage="changePage" style="display: inline-block;width:85%"/><button style="display: inline-block;" @click="addPage" type="button" class="px-3 py-2 text-xs font-3xl text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
+       </div>
             <div class="border-dashed border-2 border-600 min-h-[50%] m-5 p-5 hover:bg-gray-100" style="background-color: white;">
+                
                 <div v-for="(step, i) in selectedFields">
+                    <div v-if="selectedpage===i">
                     <div v-if="step.fields.length === 0">Drag here!</div>
                     <draggable v-model="step.fields" tag="div" group="fields" :animation="300">
 
@@ -75,19 +84,9 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                                 <label style="display: inline-block;"
                                     class="block mb-1 text-base font-medium text-gray-800 dark:text-white">{{
                                         field.content.options.label }} </label>
-                                <text-input v-if="field.content.type === 'Text'" v-bind="field.content.options" />
-                                <text-area-input v-else-if="field.content.type === 'Textarea'"
-                                    v-bind="field.content.options" />
-                                <email-input v-else-if="field.content.type === 'Email'" />
-                                <step-input v-else-if="field.content.type === 'Slider'" />
-                                <radio-input v-else-if="field.content.type === 'Radio'" v-bind="field.content.options"/>
-                                <checkbox-input v-else-if="field.content.type === 'Checkbox'" v-bind="field.content.options"/>
-                                <select-input v-else-if="field.content.type === 'Select'" v-bind="field.content.options"/>
-                                <toggle-input v-else-if="field.content.type === 'Toggle'" v-bind="field.content.options"/>
-                                <date-input v-else-if="field.content.type === 'Date'" v-bind="field.content.options"/>
-                                <file-upload-input v-else-if="field.content.type === 'FileUpload'" v-bind="field.content.options"/>
+                                <component :is="field.content.type+'Input'" v-bind="field.content.options"/>
 
-                                <input v-else v-bind:type="field.content.type">
+                                
                                 <div>
                                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{
                                         field.content.options.description }}</p>
@@ -95,6 +94,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                             </div>
                         </template>
                     </draggable>
+                </div>
                 </div>
             </div>
         </div>
@@ -108,8 +108,9 @@ import { basicComponents } from "../components/formitems/componentsConfig";
 
 <script>
 import draggable from "vuedraggable";
+import UserService from "../services/user.service";
 import TextInput from "../components/formitems/TextInput.vue";
-import TextAreaInput from "../components/formitems/TextAreaInput.vue";
+import TextareaInput from "../components/formitems/TextareaInput.vue";
 import FormFieldOptionsModal from "../components/formitems/FormFieldOptionsModal.vue";
 import EmailInput from "../components/formitems/EmailInput.vue";
 import StepInput from "../components/formitems/StepInput.vue";
@@ -124,20 +125,23 @@ import { Field } from "vee-validate";
 
 export default {
     name: "FormBuilder",
-    components: { FormFieldOptionsModal },
+    components: { FormFieldOptionsModal, SelectInput, RadioInput },
     data() {
         return {
             activeTab: "tab1",
             activeSect: "fields",
-            steps: 1,
+            steps: 0,
             selectedFields: [{ fields: [] }], //must be called dynamically
             selectedfield: null,
             counter: 0,
+            selectedpage: 0,
 
         };
     },
     computed: {
-
+        formconfig() {
+            return this.selectedFields;
+        }
     }
     ,
 
@@ -162,11 +166,44 @@ export default {
         },
         print() {
             console.log(this.selectedFields)
+        },
+        saveForm() {
+            UserService.saveForm(1,{formDesign:JSON.stringify(this.selectedFields), title:"testForm"}).then(
+      (response) => {
+        console.log(response.data)
+      },
+      (error) => {
+        this.error =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message || error.message.toString();
+          console.log(this.error);
+
+      }
+    );
+        },
+        addPage() {
+            this.steps+=1
+            this.selectedFields.push({ fields: [] })
+            this.changePage(this.steps+1)
+        },
+        changePage(page) {
+            this.selectedpage=page-1;
+            console.log(this.selectedpage)
+        },
+        renderForm() {
+            this.$router.push({
+  path: '/test',
+  query: {
+    data: JSON.stringify(this.selectedFields)
+  }
+});
         }
 
     },
     mounted() {
-
+        
     },
 
 }
@@ -175,7 +212,7 @@ export default {
 
 <style scoped>
 .split {
-    height: 100%;
+    overflow-y: scroll;
 }
 
 /* Control the left side */
@@ -195,13 +232,12 @@ export default {
 
 .parent {
     display: flex;
-    height: 100vh;
 
-    /* position:absolute;
-top:0px;
+    position:absolute;
+top:50px;
 right:0px;
 bottom:0px;
-left:0px; */
+left:0px;
 }
 
 .tab-links {

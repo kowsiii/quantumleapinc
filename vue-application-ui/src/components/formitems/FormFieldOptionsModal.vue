@@ -1,7 +1,7 @@
 <template>
     <div>
         <h5 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Field Configuration</h5>
-        <div>
+        <div style="overflow-y: scroll;">
         <p class="text-sm text-gray-400 dark:text-white mb-2">PROPERTIES</p>
         <!-- Name -->
         <div>

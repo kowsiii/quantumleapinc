@@ -1,9 +1,21 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8081/api/test/';
+const API_URL = 'http://localhost:8081/api/';
 
 class UserService {
+  getUsers() {
+    return axios.get(API_URL + 'auth/users', { headers: authHeader() });
+  }
+
+  createUser(user) {
+    return axios.post(API_URL + 'auth/signup', user, { headers: authHeader() });
+  }
+
+  saveForm(id, config) {
+    return axios.post(API_URL + 'config/form/update/' + id, config, { headers: authHeader() });
+  }
+
   getPublicContent() {
     return axios.get(API_URL + 'all');
   }

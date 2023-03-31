@@ -92,12 +92,12 @@ const routes = [
       {
         path: "/test",
         name: "test",
-        component: () => import('@/views/TestView.vue'),
+        component: () => import('@/views/TestView2.vue'),
       },
       {
         path: "/text",
         name: "text",
-        component: () => import('@/components/formitems/FileUploadInput.vue'),
+        component: () => import('@/components/formitems/DateInput.vue'),
       }
 ]
 
