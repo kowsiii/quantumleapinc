@@ -28,43 +28,57 @@ export const basicComponents = [
       description:'' 
     },
   },
-  {
-    type: 'Number',
-    icon: 'icon-number',
-    options: {
-      width: '',
-      required: false,
-      defaultValue: 0,
-      min: '',
-      max: '',
-      step: 1,
-      disabled: false,
-      controlsPosition: '',
-    },
-  },
+  // {
+  //   type: 'Number',
+  //   icon: 'icon-number',
+  //   options: {
+  //     width: '',
+  //     required: false,
+  //     defaultValue: 0,
+  //     min: '',
+  //     max: '',
+  //     step: 1,
+  //     disabled: false,
+  //     controlsPosition: '',
+  //   },
+  // },
+  // {
+  //   type: 'Email',
+  //   icon: 'icon-color',
+  //   options: {
+  //     defaultValue: '',
+  //     disabled: false,
+  //     showAlpha: false,
+  //     required: false,
+  //     placeholder: ''
+  //   },
+  // },
   {
     type: 'Radio',
     icon: 'icon-radio-active',
     options: {
+      label:'',
+      description:'',
       inline: false,
       defaultValue: '',
       showLabel: false,
       options: [
         {
-          value: 'Option 1',
+          value: '',
           label: 'Option 1',
         },
         {
-          value: 'Option 2',
+          value: '',
           label: 'Option 2',
         },
         {
-          value: 'Option 3',
+          value: '',
           label: 'Option 3',
         },
       ],
       required: false,
       width: '',
+      name:'',
       remote: false,
       remoteOptions: [],
       props: {
@@ -84,13 +98,16 @@ export const basicComponents = [
       showLabel: false,
       options: [
         {
-          value: 'Option 1',
+          value: '',
+          label: 'Option 1',
         },
         {
-          value: 'Option 2',
+          value: '',
+          label: 'Option 2',
         },
         {
-          value: 'Option 3',
+          value: '',
+          label: 'Option 3',
         },
       ],
       required: false,
@@ -102,6 +119,49 @@ export const basicComponents = [
         label: 'label',
       },
       remoteFunc: '',
+      disabled: false,
+    },
+  },
+  {
+    type: 'Select',
+    icon: 'icon-select',
+    options: {
+      defaultValue: '',
+      multiple: false,
+      disabled: false,
+      clearable: false,
+      placeholder: '',
+      required: false,
+      showLabel: false,
+      width: '',
+      options: [
+        {
+          value: 'Option 1',
+        },
+        {
+          value: 'Option 2',
+        },
+        {
+          value: 'Option 3',
+        },
+      ],
+      remote: false,
+      filterable: false,
+      remoteOptions: [],
+      props: {
+        value: 'value',
+        label: 'label',
+      },
+      remoteFunc: '',
+    },
+  },
+  {
+    type: 'Toggle',
+    icon: 'icon-switch',
+    options: {
+      label:'Toggle here',
+      value: false,
+      required: false,
       disabled: false,
     },
   },
@@ -144,7 +204,7 @@ export const basicComponents = [
     },
   },
   {
-    type: 'rate',
+    type: 'DateTime',
     icon: 'icon-pingfen1',
     options: {
       defaultValue: null,
@@ -154,58 +214,7 @@ export const basicComponents = [
       required: false,
     },
   },
-  {
-    type: 'Email',
-    icon: 'icon-color',
-    options: {
-      defaultValue: '',
-      disabled: false,
-      showAlpha: false,
-      required: false,
-    },
-  },
-  {
-    type: 'Select',
-    icon: 'icon-select',
-    options: {
-      defaultValue: '',
-      multiple: false,
-      disabled: false,
-      clearable: false,
-      placeholder: '',
-      required: false,
-      showLabel: false,
-      width: '',
-      options: [
-        {
-          value: 'Option 1',
-        },
-        {
-          value: 'Option 2',
-        },
-        {
-          value: 'Option 3',
-        },
-      ],
-      remote: false,
-      filterable: false,
-      remoteOptions: [],
-      props: {
-        value: 'value',
-        label: 'label',
-      },
-      remoteFunc: '',
-    },
-  },
-  {
-    type: 'Toggle',
-    icon: 'icon-switch',
-    options: {
-      defaultValue: false,
-      required: false,
-      disabled: false,
-    },
-  },
+  
   {
     type: 'Slider',
     icon: 'icon-slider',
@@ -222,7 +231,17 @@ export const basicComponents = [
     },
   },
   {
-    type: 'text',
+    type: 'FileUpload',
+    icon: 'icon-wenzishezhi-',
+    options: {
+      label: 'Upload file',
+      descriptionf: 'SVG, PNG, JPG or GIF (MAX. 800x400px).',
+      defaultValue: 'This is a text',
+      customClass: '',
+    },
+  },
+  {
+    type: 'Signature',
     icon: 'icon-wenzishezhi-',
     options: {
       defaultValue: 'This is a text',

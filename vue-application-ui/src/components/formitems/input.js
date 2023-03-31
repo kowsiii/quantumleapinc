@@ -9,8 +9,11 @@ export default {
     label: { type: String, default: ''},
     placeholder: { type: String, default: '' },
     description: { type: String, default: '' },
+    descriptionf: { type: String, default: '' },
     readonly: { type: Boolean, default: true },
     required: { type: Boolean, default: false },
+    options: {type: Array, default: []},
+    inline: { type: Boolean, default: true },
   },
 
   data() {

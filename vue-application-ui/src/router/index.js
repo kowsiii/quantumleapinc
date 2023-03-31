@@ -81,14 +81,8 @@ const routes = [
       {
         path: "/text",
         name: "text",
-        component: () => import('@/components/formitems/EmailInput.vue'),
+        component: () => import('@/components/formitems/FileUploadInput.vue'),
       }
-     
-    //   {
-    //     path: "/formbuilder",
-    //     name: "formbuilder",
-    //     component: () => import('@/views/FormBuilder.vue'),
-    //   },
 ]
 
 const router = createRouter({

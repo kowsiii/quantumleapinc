@@ -56,7 +56,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                         </div>
 
                     </div>
-                    <div v-show="activeTab === 'tab2'" @click="print">Tab 2 content goes here.</div>
+                    <div v-show="activeTab === 'tab2'" @click="print">Tab 2 content goes here.{{ selectedFields }}</div>
 
                 </div>
             </div>
@@ -64,7 +64,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
         </div>
 
         <div class="split centre">
-            <div class="border-dashed border-2 border-600 min-h-[50%] m-5 p-5 hover:bg-gray-100">
+            <div class="border-dashed border-2 border-600 min-h-[50%] m-5 p-5 hover:bg-gray-100" style="background-color: white;">
                 <div v-for="(step, i) in selectedFields">
                     <div v-if="step.fields.length === 0">Drag here!</div>
                     <draggable v-model="step.fields" tag="div" group="fields" :animation="300">
@@ -80,6 +80,13 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                                     v-bind="field.content.options" />
                                 <email-input v-else-if="field.content.type === 'Email'" />
                                 <step-input v-else-if="field.content.type === 'Slider'" />
+                                <radio-input v-else-if="field.content.type === 'Radio'" v-bind="field.content.options"/>
+                                <checkbox-input v-else-if="field.content.type === 'Checkbox'" v-bind="field.content.options"/>
+                                <select-input v-else-if="field.content.type === 'Select'" v-bind="field.content.options"/>
+                                <toggle-input v-else-if="field.content.type === 'Toggle'" v-bind="field.content.options"/>
+                                <date-input v-else-if="field.content.type === 'Date'" v-bind="field.content.options"/>
+                                <file-upload-input v-else-if="field.content.type === 'FileUpload'" v-bind="field.content.options"/>
+
                                 <input v-else v-bind:type="field.content.type">
                                 <div>
                                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{
@@ -92,7 +99,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
             </div>
         </div>
 
-        <div class="split right" style="padding:20px;">
+        <div class="split right" style="padding:10px 20px;">
             <FormFieldOptionsModal :field="selectedfield" v-if="selectedfield" />
         </div>
     </div>
@@ -106,6 +113,12 @@ import TextAreaInput from "../components/formitems/TextAreaInput.vue";
 import FormFieldOptionsModal from "../components/formitems/FormFieldOptionsModal.vue";
 import EmailInput from "../components/formitems/EmailInput.vue";
 import StepInput from "../components/formitems/StepInput.vue";
+import RadioInput from "../components/formitems/RadioInput.vue";
+import CheckboxInput from "../components/formitems/CheckboxInput.vue";
+import SelectInput from "../components/formitems/SelectInput.vue";
+import ToggleInput from "../components/formitems/ToggleInput.vue";
+import DateInput from "../components/formitems/DateInput.vue";
+import FileUploadInput from "../components/formitems/FileUploadInput.vue";
 import { Field } from "vee-validate";
 
 
