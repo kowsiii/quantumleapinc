@@ -76,12 +76,13 @@ public class FormConfigController {
         }
     }
 
-    @PostMapping("/updateStatus/{id}/{status}")
-    public ResponseEntity<?> updateStatus(@PathVariable("id") Long formConfigId, @PathVariable("status") String status) {
-        logger.debug("updateStatus: update form config status for " +  formConfigId + " with status " + status);
+    @PostMapping("/status/{id}")
+    public ResponseEntity<?> updateStatus(@RequestBody FormConfigRequest formConfigRequest,
+                                          @PathVariable("id") Long formConfigId) {
+        logger.debug("updateStatus: update form config status for " +  formConfigId + " with status " + formConfigRequest.getStatus());
         try {
             String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
-            FormConfigResponse formConfigResponse = formConfigService.updateStatus(loginUser, formConfigId, status);
+            FormConfigResponse formConfigResponse = formConfigService.updateStatus(loginUser, formConfigId, formConfigRequest.getStatus());
             return ResponseEntity.ok().body(new MessageResponse("Success", "form config status updated."));
         } catch (Exception ex) {
             logger.error("updateStatus: " + ex.toString());
@@ -90,12 +91,13 @@ public class FormConfigController {
         }
     }
 
-    @PostMapping("/updateTitle/{id}/{title}")
-    public ResponseEntity<?> updateTitle(@PathVariable("id") Long formConfigInfoId, @PathVariable("title") String title) {
-        logger.debug("updateTitle: update form config title for " +  formConfigInfoId + " with title " + title);
+    @PostMapping("/title/{id}")
+    public ResponseEntity<?> updateTitle(@RequestBody FormConfigRequest formConfigRequest,
+                                         @PathVariable("id") Long formConfigInfoId) {
+        logger.debug("updateTitle: update form config title for " +  formConfigInfoId + " with title " + formConfigRequest.getTitle());
         try {
             String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
-            FormConfigResponse formConfigResponse = formConfigService.updateTitle(loginUser, formConfigInfoId, title);
+            FormConfigResponse formConfigResponse = formConfigService.updateTitle(loginUser, formConfigInfoId, formConfigRequest.getTitle());
             return ResponseEntity.ok().body(new MessageResponse("Success", "form config title updated."));
         } catch (Exception ex) {
             logger.error("updateTitle: " + ex.toString());

@@ -36,6 +36,11 @@ public class User {
     @Column(nullable=false, unique=false)
     private String password;
 
+    @NotBlank
+    @Size(min = 1, max = 1)
+    @Column(length=1, nullable=false, unique=false)
+    private String active;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -83,6 +88,17 @@ public class User {
         this.password = password;
     }
 
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public Boolean getActiveStatus() {
+        return active.equalsIgnoreCase("Y") ? Boolean.TRUE : Boolean.FALSE;
+    }
     public Set<Role> getRoles() {
         return roles;
     }

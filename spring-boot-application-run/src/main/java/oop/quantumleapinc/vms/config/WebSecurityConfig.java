@@ -66,9 +66,11 @@ public class WebSecurityConfig {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/config/form/**").hasRole("ADMIN")
+                        .requestMatchers("/api/auth/users").hasRole("ADMIN")
+                        .requestMatchers("/api/auth/user/**").hasRole("ADMIN")
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
-                        .requestMatchers("/api/config/form/**").hasRole("ADMIN")
                 .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
