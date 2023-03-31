@@ -7,25 +7,35 @@ const routes = [
       name: "login",
       component: () => import('@/views/UserLogin.vue'),
     },
-    {
+    /*{
+        path: "/admin",
+        name: "AdminHome",
+        component: () => import('@/views/AdminHome.vue'),
+      },*/
+      {
         path: "/admin",
         name: "AdminHome",
         component: () => import('@/views/AdminHome.vue'),
       },
       {
-        path: "/admin/assigned",
+        path: "/admin/myworkflows/assigned",
         name: "AdminAssigned",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
-        path: "/admin/inprogress",
+        path: "/admin/myworkflows/inprogress",
         name: "AdminInProgress",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
-        path: "/admin/completed",
+        path: "/admin/myworkflows/completed",
         name: "AdminCompleted",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
+      },
+      {
+        path: "/admin/myworkflows/all",
+        name: "AdminAll",
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
         path: "/formbuilder",
@@ -37,20 +47,20 @@ const routes = [
         name: "UserManagement",
         component: () => import('@/views/UserManagement.vue'),
       },
-      {
+      /*{
         path: "/manageworkflows",
         name: "ManageWorkflows",
         component: () => import('@/views/ManageWorkflows.vue'),
-      },
+      }*/,
       //This need to change
       {
-        path: "/manageworkflows/workflow/workflowstatus",
+        path: "/admin/manageworkflows/workflowstatus",
         name: "WorkflowStatus",
         component: () => import('@/views/WorkflowStatus.vue'),
       },
       //This need to change
       {
-        path: "/manageworkflows/workflow/workflowassignment",
+        path: "/admin/manageworkflows/workflowassignment",
         name: "WorkflowAssignment",
         component: () => import('@/views/WorkflowAssignment.vue'),
       },
