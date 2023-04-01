@@ -112,7 +112,7 @@ import UserService from "../services/user.service";
 import TextInput from "../components/formitems/TextInput.vue";
 import TextareaInput from "../components/formitems/TextareaInput.vue";
 import FormFieldOptionsModal from "../components/formitems/FormFieldOptionsModal.vue";
-import EmailInput from "../components/formitems/EmailInput.vue";
+//import EmailInput from "../components/formitems/EmailInput.vue";
 import StepInput from "../components/formitems/StepInput.vue";
 import RadioInput from "../components/formitems/RadioInput.vue";
 import CheckboxInput from "../components/formitems/CheckboxInput.vue";
@@ -120,12 +120,12 @@ import SelectInput from "../components/formitems/SelectInput.vue";
 import ToggleInput from "../components/formitems/ToggleInput.vue";
 import DateInput from "../components/formitems/DateInput.vue";
 import FileUploadInput from "../components/formitems/FileUploadInput.vue";
-import { Field } from "vee-validate";
+
 
 
 export default {
     name: "FormBuilder",
-    components: { FormFieldOptionsModal, SelectInput, RadioInput, CheckboxInput, TextInput, TextareaInput },
+    components: { FormFieldOptionsModal, SelectInput, RadioInput, CheckboxInput, TextInput, TextareaInput, ToggleInput, DateInput, FileUploadInput },
     data() {
         return {
             activeTab: "tab1",
