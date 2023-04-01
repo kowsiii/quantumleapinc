@@ -158,7 +158,7 @@ public class AuthController {
 
     @PostMapping("/user/{id}")
     public ResponseEntity<?> updateUser(@RequestBody SignupRequest signUpRequest,  @PathVariable("id") Long userId) {
-        logger.debug("users: update user for " + userId);
+        logger.debug("updateUser: update user for " + userId);
         try {
             User user = userRepository.findById(userId)
                     .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
@@ -195,6 +195,22 @@ public class AuthController {
             logger.error("user: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new MessageResponse("Error", "Not able to update user."));
+        }
+    }
+
+    @PostMapping("/password/{id}")
+    public ResponseEntity<?> updatePassword(@RequestBody SignupRequest signUpRequest,  @PathVariable("id") Long userId) {
+        logger.debug("updatePassword: update password for " + userId);
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
+            user.setPassword(encoder.encode(signUpRequest.getPassword()));
+            userRepository.saveAndFlush(user);
+            return ResponseEntity.ok().body(new MessageResponse("Success", "user password updated."));
+        } catch (Exception ex) {
+            logger.error("updatePassword: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to update user password."));
         }
     }
 
