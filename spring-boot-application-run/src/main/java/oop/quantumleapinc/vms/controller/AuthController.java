@@ -114,7 +114,7 @@ public class AuthController {
             return ResponseEntity.ok()
                     .body(new UserInfoResponse(userDetails.getId(),
                             userDetails.getUsername(),
-                            roles, jwt));
+                            roles, jwt, userDetails.getName()));
 
 //        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwt)
 //                .body(new UserInfoResponse(userDetails.getId(),

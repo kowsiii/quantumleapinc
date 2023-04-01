@@ -61,7 +61,6 @@ public class User {
         this.name = name;
     }
 
-
     public Boolean getActiveStatus() {
         return active.equalsIgnoreCase("Y") ? Boolean.TRUE : Boolean.FALSE;
     }
