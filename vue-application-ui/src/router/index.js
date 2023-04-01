@@ -65,6 +65,11 @@ const routes = [
         component: () => import('@/views/WorkflowAssignment.vue'),
       },
       {
+        path: "/admin/manageworkflows/forms",
+        name: "Forms",
+        component: () => import('@/views/Forms.vue'),
+      },
+      {
         path: "/vendor",
         name: "VendorHome",
         component: () => import('@/views/VendorHome.vue'),
