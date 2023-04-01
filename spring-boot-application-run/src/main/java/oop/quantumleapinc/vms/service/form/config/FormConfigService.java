@@ -34,6 +34,15 @@ public class FormConfigService {
         return result;
     }
 
+    public List<FormConfigResponse> getList(String username) {
+        List<FormConfigResponse> result = new ArrayList<>();
+        List<FormConfig> list = formConfigRepository.findByCreatedBy(username);
+        list.forEach((formConfig) -> {
+            result.add(transformToResponse(formConfig));
+        });
+        return result;
+    }
+
     public FormConfigResponse get(Long formConfigId) {
         FormConfig formConfig = formConfigRepository.findById(formConfigId)
                 .orElseThrow(() -> new EntityNotFoundException(formConfigId.toString()));

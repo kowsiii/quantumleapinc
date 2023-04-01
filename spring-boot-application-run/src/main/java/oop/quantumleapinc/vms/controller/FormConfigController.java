@@ -77,6 +77,19 @@ public class FormConfigController {
         }
     }
 
+    @GetMapping("/mylist")
+    public ResponseEntity<?> mylist() {
+        logger.debug("list: get form config list");
+        try {
+            String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
+            return ResponseEntity.ok().body(formConfigService.getList(loginUser));
+        } catch (Exception ex) {
+            logger.error("list: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to get form config list."));
+        }
+    }
+
     @PostMapping("/status/{id}")
     public ResponseEntity<?> updateStatus(@RequestBody FormConfigRequest formConfigRequest,
                                           @PathVariable("id") Long formConfigId) {
