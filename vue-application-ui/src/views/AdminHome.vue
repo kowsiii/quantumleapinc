@@ -3,7 +3,7 @@
   <div class="container-fluid py-4 px-20">
     <div class="row">
       <div class="col-md-10 mb-4">
-        <h4 class="text-2xl font-bold dark:text-white">Manage Workflows</h4>
+        <h4 class="text-2xl font-bold dark:text-white">Workflows</h4>
       </div>
     </div>
         
@@ -68,7 +68,7 @@ export default {
     NavBar
   },
   created() {
-    document.title = "Manage Workflows";
+    document.title = "Workflows";
   }
 
 };
