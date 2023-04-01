@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class FormRequest {
+import java.io.Serializable;
+
+public class FormRequest implements Serializable {
 
     private Long formId;
     private Long formConfigId;

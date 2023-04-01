@@ -5,6 +5,7 @@ import oop.quantumleapinc.vms.payload.form.FormConfigRequest;
 import oop.quantumleapinc.vms.payload.form.FormConfigResponse;
 import oop.quantumleapinc.vms.service.form.config.FormConfigService;
 import jakarta.validation.Valid;
+import org.aspectj.weaver.ast.Not;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +88,7 @@ public class FormConfigController {
         } catch (Exception ex) {
             logger.error("updateStatus: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MessageResponse("Error", "Not able to update form config."));
+                    .body(new MessageResponse("Error", "Not able to update form config status."));
         }
     }
 
@@ -102,7 +103,7 @@ public class FormConfigController {
         } catch (Exception ex) {
             logger.error("updateTitle: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MessageResponse("Error: Not able to update form config!"));
+                    .body(new MessageResponse("Error", "Not able to update form config title."));
         }
     }
 }
