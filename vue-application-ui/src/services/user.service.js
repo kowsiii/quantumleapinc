@@ -12,6 +12,10 @@ class UserService {
     return axios.post(API_URL + 'auth/signup', user, { headers: authHeader() });
   }
 
+  newForm(form) {
+    return axios.post(API_URL + 'config/form/add', form, { headers: authHeader() });
+  }
+
   saveForm(id, config) {
     return axios.post(API_URL + 'config/form/update/' + id, config, { headers: authHeader() });
   }
