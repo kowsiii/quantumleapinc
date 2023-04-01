@@ -3,10 +3,14 @@ package oop.quantumleapinc.vms.model.form.submission;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "form", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"path", "username"})
@@ -72,70 +76,6 @@ public class Form implements Serializable {
     public Form() {
     }
 
-    public Long getFormId() {
-        return formId;
-    }
-
-    public void setFormId(Long formId) {
-        this.formId = formId;
-    }
-
-    public String getFormData() {
-        return formData;
-    }
-
-    public void setFormData(String formData) {
-        this.formData = formData;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
 //    public FormConfig getFormConfig() {
 //        return formConfig;
 //    }
@@ -151,29 +91,4 @@ public class Form implements Serializable {
 //    public void setFormConfigInfo(FormConfigInfo formConfigInfo) {
 //        this.formConfigInfo = formConfigInfo;
 //    }
-
-
-    public Long getFormConfigId() {
-        return formConfigId;
-    }
-
-    public void setFormConfigId(Long formConfigId) {
-        this.formConfigId = formConfigId;
-    }
-
-    public Long getFormConfigInfoId() {
-        return formConfigInfoId;
-    }
-
-    public void setFormConfigInfoId(Long formConfigInfoId) {
-        this.formConfigInfoId = formConfigInfoId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }
