@@ -262,16 +262,16 @@ onMounted(() => {
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
                     <div class="pl-3">
-                        <div class="text-base font-semibold">Neil Sims</div>
-                        <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
+                        <div class="text-base font-semibold">{{ user.name }}</div>
+                        <div class="font-normal text-gray-500">{{user.username}}</div>
                     </div>  
                 </th>
                 <td class="px-6 py-4">
-                    React Developer
+                    {{user.roles[0].name}}
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex items-center">
-                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> <span v-if="user.activeStatus">Online</span><span v-else>Offline</span>
                     </div>
                 </td>
                 <td class="px-6 py-4">
@@ -451,7 +451,7 @@ onMounted(() => {
     </div>
     </div>
 </div>
-
+{{ latestUsers }}
 
 </template>
 
