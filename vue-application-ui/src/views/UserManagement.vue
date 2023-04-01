@@ -271,7 +271,7 @@ onMounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr v-for="user in latestUsers" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
                         <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -295,7 +295,7 @@ onMounted(() => {
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="#editUserModal" @click="modalHandlerOpen()" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                 </td>
             </tr>
             
@@ -311,7 +311,7 @@ onMounted(() => {
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                         Edit user
                     </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
+                    <button type="button" @click = "modalHandlerClose()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                     </button>
                 </div>
@@ -420,10 +420,21 @@ export default {
 
       }
     );
+    },
+    modalHandlerOpen(){
+        console.log('working');
+        document.getElementById("editUserModal").style.display = "block"
+        document.getElementById("editUserModal").className += "show"
+    },
+    modalHandlerClose(){
+        document.getElementById("editUserModal").style.display = "none"
+        document.getElementById("editUserModal").className += document.getElementById("exampleModal").className.replace("show", "")
     }
   },
   mounted() {
     this.getUsers();
+    var modal = document.getElementById("editUserModal")
+    
   },
         
 
