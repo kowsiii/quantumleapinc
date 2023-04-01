@@ -214,10 +214,13 @@ onMounted(() => {
                 <li>
                   <!--style="color: #1a57dd;"-->
                   <!--exact-active-class="bg-blue-500 text-white"-->
-                  <router-link to="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Awaiting</router-link>
+                  <router-link to="/approver/awaiting" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Awaiting</router-link>
                 </li>
                 <li>
-                  <router-link to="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Approved</router-link>
+                  <router-link to="/approver/approved" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Approved</router-link>
+                </li>
+                <li>
+                  <router-link to="/approver" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</router-link>
                 </li>
               </ul>
             </div>
