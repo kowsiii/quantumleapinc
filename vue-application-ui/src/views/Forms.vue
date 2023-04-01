@@ -1,5 +1,5 @@
 <template>
-    <NavBar :is-vendor="false"/>
+    <NavBar :user="user"/>
     <div class="container-fluid py-4 px-20">
     <div class="row mb-4">
       <div class="col-md-10">
@@ -41,9 +41,14 @@
 import NavBar from "../components/NavBar.vue";
 
 export default{
-    name: "Forms",
-    components: {
-        NavBar
-    }
+  name: "Forms",
+  components: {
+    NavBar
+  },
+  data() {
+    return {
+      user: 'admin',
+    };
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <NavBar :is-vendor="false" />
+  <NavBar :user="user" />
   <div class="container-fluid py-4 px-20">
     <div class="row">
       <div class="col-md-10 mb-4">
@@ -69,7 +69,11 @@ export default {
   },
   created() {
     document.title = "Workflows";
+  },
+  data() {
+    return {
+      user: 'admin',
+    };
   }
-
 };
 </script>

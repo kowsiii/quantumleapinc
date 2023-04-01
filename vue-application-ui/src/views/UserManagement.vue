@@ -212,7 +212,7 @@ onMounted(() => {
 </script>
 
 <template>
-<NavBar :is-vendor="false"/>
+<NavBar :user="user"/>
 <div class="relative overflow-x-auto sm:rounded-lg px-20">
     <div class="flex items-center justify-between py-4 bg-white dark:bg-gray-800">
         <div>
@@ -378,7 +378,7 @@ export default {
         users: "",
         error:"",
         render: false,
-
+        user: "admin"
     };
   },
   computed: {
