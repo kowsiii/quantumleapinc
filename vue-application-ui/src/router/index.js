@@ -7,11 +7,6 @@ const routes = [
       name: "login",
       component: () => import('@/views/UserLogin.vue'),
     },
-    /*{
-        path: "/admin",
-        name: "AdminHome",
-        component: () => import('@/views/AdminHome.vue'),
-      },*/
       {
         path: "/admin",
         name: "AdminHome",
@@ -88,6 +83,21 @@ const routes = [
         path: "/vendor/completed",
         name: "VendorCompleted",
         component: () => import('@/views/VendorHome.vue'),
+      },
+      {
+        path: "/approver",
+        name: "ApproverHome",
+        component: () => import('@/views/ApproverHome.vue'),
+      },
+      {
+        path: "/approver/awaiting",
+        name: "ApproverAwaiting",
+        component: () => import('@/views/ApproverHome.vue'),
+      },
+      {
+        path: "/approver/approved",
+        name: "ApproverApproved",
+        component: () => import('@/views/ApproverHome.vue'),
       },
       {
         path: "/register",
