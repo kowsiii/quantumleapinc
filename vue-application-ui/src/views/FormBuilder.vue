@@ -125,7 +125,7 @@ import { Field } from "vee-validate";
 
 export default {
     name: "FormBuilder",
-    components: { FormFieldOptionsModal, SelectInput, RadioInput },
+    components: { FormFieldOptionsModal, SelectInput, RadioInput, CheckboxInput, TextInput, TextareaInput },
     data() {
         return {
             activeTab: "tab1",
@@ -194,7 +194,7 @@ export default {
         },
         renderForm() {
             this.$router.push({
-  path: '/test',
+  path: '/test1',
   query: {
     data: JSON.stringify(this.selectedFields)
   }

@@ -6,7 +6,9 @@
         <h4 class="text-2xl font-bold dark:text-white">Forms</h4>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-primary mb-2" role="button" value="">Add Form</button>
+        <button type="button" class="flex items-center justify-center px-3 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            + Create New Form
+          </button>
     </div>
     </div>
     <div class="row">

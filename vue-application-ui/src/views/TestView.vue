@@ -1,4 +1,5 @@
 <template>
+  <div id="form">
   <div v-for="sect in render">
     <div v-for="field in sect.fields">
       <div>
@@ -17,6 +18,7 @@
     </div>
     <hr>
   </div>
+</div>
 </template>
   
 <script>
@@ -68,8 +70,9 @@ export default {
   mounted() {
 
     this.render = JSON.parse(this.$route.query.data);
-
     console.log(this.render);
+    const html = document.querySelector('#form').outerHTML;
+    console.log(html);
   }
 }
 </script>
