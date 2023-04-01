@@ -110,6 +110,11 @@ const routes = [
         component: () => import('@/views/TestView2.vue'),
       },
       {
+        path: "/workflowbuilder",
+        name: "workflowbuilder",
+        component: () => import('@/views/WorkflowBuilder.vue'),
+      },
+      {
         path: "/text",
         name: "text",
         component: () => import('@/components/formitems/DateInput.vue'),
