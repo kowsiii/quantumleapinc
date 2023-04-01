@@ -50,10 +50,7 @@ public class UserController {
     // }
 
     //(from UML remove user)
-    @DeleteMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable int id){
-        return service.deleteUser(id);
-    }
+
     
 
 }
