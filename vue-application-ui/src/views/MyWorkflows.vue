@@ -1,5 +1,5 @@
 <template>
-    <NavBar :is-vendor="false"/>
+    <NavBar :user="user"/>
     <AssignedWorkflows :status="status"/>
 </template>
 
@@ -33,5 +33,10 @@ export default {
       immediate: true, // handle initial route on component mount
     },
   },
+  data() {
+    return {
+      user: 'admin',
+    };
+  }
 };
 </script>

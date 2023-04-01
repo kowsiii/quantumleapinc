@@ -1,5 +1,5 @@
 <template>
-    <NavBar :is-vendor="false" />
+    <NavBar :user="user" />
     <AssigningWorkflows />
 </template>
 
@@ -15,6 +15,11 @@ export default {
   },
   created() {
     document.title = "Workflow Assignment";
+  },
+  data() {
+    return {
+      user: 'admin',
+    };
   }
 };
 </script>
