@@ -36,7 +36,7 @@ public class SprintBootApplicationRunApplication {
 	
 	@EventListener(ApplicationReadyEvent.class)
 	public void sendMail(){
-		senderService.sendEmail("glenn-hamm@outlook.com","test","hello");
+		senderService.sendEmail("martin.liu.2021@scis.smu.edu.sg","test","hello");
 	}
 
 }
