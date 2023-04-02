@@ -131,7 +131,7 @@ export default {
             activeTab: "tab1",
             activeSect: "fields",
             steps: 0,
-            selectedFields: [{ fields: [] }], //must be called dynamically
+            selectedFields: "", //must be called dynamically
             selectedfield: null,
             counter: 0,
             selectedpage: 0,
@@ -203,6 +203,8 @@ export default {
 
     },
     mounted() {
+        var interim = JSON.parse(this.$route.query.data);
+        this.selectedFields = JSON.parse(interim.formDesign).design;
         
     },
 

@@ -136,12 +136,12 @@ export default{
   },
   methods: {
     createForm(title) {
-      UserService.newForm({title:title.title, formDesign:"[]"}).then(
+      UserService.newForm({title:title.title, formDesign:`{"design": [{ "fields": [] }]}`}).then(
       (response) => {
         this.$router.push({
   path: '/formbuilder',
   query: {
-    data: JSON.stringify({title:title.title, formDesign:"[]"})
+    data: JSON.stringify({title:title.title, formDesign:`{"design": [{ "fields": [] }]}`})
   }
 });
       },
