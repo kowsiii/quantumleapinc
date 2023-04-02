@@ -13,6 +13,11 @@ const routes = [
         component: () => import('@/views/AdminHome.vue'),
       },
       {
+        path: "/admin/manageworkflows/createworkflow",
+        name: "CreateWorkflow",
+        component: () => import('@/views/CreateWorkflow.vue'),
+      },
+      {
         path: "/admin/myworkflows/assigned",
         name: "AdminAssigned",
         component: () => import('@/views/MyWorkflows.vue'),
