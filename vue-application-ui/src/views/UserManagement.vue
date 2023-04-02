@@ -270,7 +270,7 @@ export default {
     modalHandlerOpen(user){
         this.selecteduser = user
         console.log('working');
-        document.getElementById("editUserModal").style.display = "block"
+        document.getElementById("editUserModal").style.display = "flex"
         document.getElementById("editUserModal").className += "show"
         console.log(this.selecteduser.roles[0].name)
     },
