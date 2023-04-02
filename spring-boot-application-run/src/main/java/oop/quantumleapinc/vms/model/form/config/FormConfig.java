@@ -4,12 +4,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "form_config")
 public class FormConfig  implements Serializable {
@@ -61,78 +65,6 @@ public class FormConfig  implements Serializable {
 //    private FormConfigInfo activeFormConfigInfo;
 
     public FormConfig() {
-    }
-
-    public Long getFormConfigId() {
-        return formConfigId;
-    }
-
-    public void setFormConfigId(Long formConfigId) {
-        this.formConfigId = formConfigId;
-    }
-
-    public String getRandomPath() {
-        return randomPath;
-    }
-
-    public void setRandomPath(String randomPath) {
-        this.randomPath = randomPath;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public String getActive() {
-        return active;
-    }
-
-    public void setActive(String active) {
-        this.active = active;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public Set<FormConfigInfo> getFormConfigInfoSet() {
-        return formConfigInfoSet;
-    }
-
-    public void setFormConfigInfoSet(Set<FormConfigInfo> formConfigInfoSet) {
-        this.formConfigInfoSet = formConfigInfoSet;
     }
 
     public FormConfigInfo getActiveFormConfigInfo() {

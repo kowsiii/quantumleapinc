@@ -7,12 +7,14 @@ public class UserInfoResponse {
     private String username;
     private List<String> roles;
     private String accessToken;
+    private String name;
 
-    public UserInfoResponse(Long id, String username, List<String> roles, String accessToken) {
+    public UserInfoResponse(Long id, String username, List<String> roles, String accessToken, String name) {
         this.id = id;
         this.username = username;
         this.roles = roles;
         this.accessToken = accessToken;
+        this.name = name;
     }
 
     public Long getId() {
@@ -37,4 +39,7 @@ public class UserInfoResponse {
 
     public String getAccessToken() { return accessToken; }
 
+    public String getName() {
+        return name;
+    }
 }

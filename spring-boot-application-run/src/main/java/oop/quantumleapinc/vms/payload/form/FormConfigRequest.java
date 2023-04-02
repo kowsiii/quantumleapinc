@@ -11,6 +11,8 @@ public class FormConfigRequest {
     @NotBlank
     private String formDesign;
 
+    private String status;
+
     public Long getFormConfigId() {
         return formConfigId;
     }
@@ -49,5 +51,12 @@ public class FormConfigRequest {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

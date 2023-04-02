@@ -5,6 +5,7 @@ import oop.quantumleapinc.vms.payload.form.FormConfigRequest;
 import oop.quantumleapinc.vms.payload.form.FormConfigResponse;
 import oop.quantumleapinc.vms.service.form.config.FormConfigService;
 import jakarta.validation.Valid;
+import org.aspectj.weaver.ast.Not;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,31 +77,46 @@ public class FormConfigController {
         }
     }
 
-    @PostMapping("/updateStatus/{id}/{status}")
-    public ResponseEntity<?> updateStatus(@PathVariable("id") Long formConfigId, @PathVariable("status") String status) {
-        logger.debug("updateStatus: update form config status for " +  formConfigId + " with status " + status);
+    @GetMapping("/mylist")
+    public ResponseEntity<?> mylist() {
+        logger.debug("list: get form config list");
         try {
             String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
-            FormConfigResponse formConfigResponse = formConfigService.updateStatus(loginUser, formConfigId, status);
+            return ResponseEntity.ok().body(formConfigService.getList(loginUser));
+        } catch (Exception ex) {
+            logger.error("list: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to get form config list."));
+        }
+    }
+
+    @PostMapping("/status/{id}")
+    public ResponseEntity<?> updateStatus(@RequestBody FormConfigRequest formConfigRequest,
+                                          @PathVariable("id") Long formConfigId) {
+        logger.debug("updateStatus: update form config status for " +  formConfigId + " with status " + formConfigRequest.getStatus());
+        try {
+            String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
+            FormConfigResponse formConfigResponse = formConfigService.updateStatus(loginUser, formConfigId, formConfigRequest.getStatus());
             return ResponseEntity.ok().body(new MessageResponse("Success", "form config status updated."));
         } catch (Exception ex) {
             logger.error("updateStatus: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MessageResponse("Error", "Not able to update form config."));
+                    .body(new MessageResponse("Error", "Not able to update form config status."));
         }
     }
 
-    @PostMapping("/updateTitle/{id}/{title}")
-    public ResponseEntity<?> updateTitle(@PathVariable("id") Long formConfigInfoId, @PathVariable("title") String title) {
-        logger.debug("updateTitle: update form config title for " +  formConfigInfoId + " with title " + title);
+    @PostMapping("/title/{id}")
+    public ResponseEntity<?> updateTitle(@RequestBody FormConfigRequest formConfigRequest,
+                                         @PathVariable("id") Long formConfigInfoId) {
+        logger.debug("updateTitle: update form config title for " +  formConfigInfoId + " with title " + formConfigRequest.getTitle());
         try {
             String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
-            FormConfigResponse formConfigResponse = formConfigService.updateTitle(loginUser, formConfigInfoId, title);
+            FormConfigResponse formConfigResponse = formConfigService.updateTitle(loginUser, formConfigInfoId, formConfigRequest.getTitle());
             return ResponseEntity.ok().body(new MessageResponse("Success", "form config title updated."));
         } catch (Exception ex) {
             logger.error("updateTitle: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MessageResponse("Error: Not able to update form config!"));
+                    .body(new MessageResponse("Error", "Not able to update form config title."));
         }
     }
 }

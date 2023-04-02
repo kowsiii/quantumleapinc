@@ -12,7 +12,7 @@ import com.example.entity.Vendor;
 import com.example.entity.returnMsg;
 import com.example.repository.UserRepository;
 import com.example.repository.VendorRepository;
-import com.google.gson.Gson;  
+
 
 //talks to repo
 @Service
@@ -31,7 +31,7 @@ public class UserService {
 
     public User getUserById(int id){
         return repository.findById(id).get();
-    }
+    }}
 
     // public User validateUser(String email, String password){
     //     User e= repository.findByEmail(email);
@@ -44,23 +44,4 @@ public class UserService {
     //     }
     // }
 
-    public String deleteUser(int id){
-        // try{
-        //     repository.deleteById(id);
-        // }catch(Exception e){
-        //     return "No Such Employee";
-        // }
-        
-        // return "Employee deleted";
-        Optional<User> e = repository.findById(id);
-        System.out.println(e);
-        if(ObjectUtils.isEmpty(e)){
-            returnMsg m = new returnMsg(400,"error");
-            return new Gson().toJson(m);
-        }
-        returnMsg m = new returnMsg(200,"no error");
-        //add delete statement
-        return new Gson().toJson(m);
-    }
-}
 //entity -> repo -> service -> controller

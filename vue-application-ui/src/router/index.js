@@ -7,25 +7,30 @@ const routes = [
       name: "login",
       component: () => import('@/views/UserLogin.vue'),
     },
-    {
+      {
         path: "/admin",
         name: "AdminHome",
         component: () => import('@/views/AdminHome.vue'),
       },
       {
-        path: "/admin/assigned",
+        path: "/admin/myworkflows/assigned",
         name: "AdminAssigned",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
-        path: "/admin/inprogress",
+        path: "/admin/myworkflows/inprogress",
         name: "AdminInProgress",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
-        path: "/admin/completed",
+        path: "/admin/myworkflows/completed",
         name: "AdminCompleted",
-        component: () => import('@/views/AdminHome.vue'),
+        component: () => import('@/views/MyWorkflows.vue'),
+      },
+      {
+        path: "/admin/myworkflows/all",
+        name: "AdminAll",
+        component: () => import('@/views/MyWorkflows.vue'),
       },
       {
         path: "/formbuilder",
@@ -37,16 +42,27 @@ const routes = [
         name: "UserManagement",
         component: () => import('@/views/UserManagement.vue'),
       },
-      {
+      /*{
         path: "/manageworkflows",
         name: "ManageWorkflows",
         component: () => import('@/views/ManageWorkflows.vue'),
+      }*/,
+      //This need to change
+      {
+        path: "/admin/manageworkflows/workflowstatus",
+        name: "WorkflowStatus",
+        component: () => import('@/views/WorkflowStatus.vue'),
       },
       //This need to change
       {
-        path: "/manageworkflows/workflow/workflowstatus",
-        name: "WorkflowStatus",
-        component: () => import('@/views/WorkflowStatus.vue'),
+        path: "/admin/manageworkflows/workflowassignment",
+        name: "WorkflowAssignment",
+        component: () => import('@/views/WorkflowAssignment.vue'),
+      },
+      {
+        path: "/admin/manageworkflows/forms",
+        name: "Forms",
+        component: () => import('@/views/Forms.vue'),
       },
       {
         path: "/vendor",
@@ -69,6 +85,21 @@ const routes = [
         component: () => import('@/views/VendorHome.vue'),
       },
       {
+        path: "/approver",
+        name: "ApproverHome",
+        component: () => import('@/views/ApproverHome.vue'),
+      },
+      {
+        path: "/approver/awaiting",
+        name: "ApproverAwaiting",
+        component: () => import('@/views/ApproverHome.vue'),
+      },
+      {
+        path: "/approver/approved",
+        name: "ApproverApproved",
+        component: () => import('@/views/ApproverHome.vue'),
+      },
+      {
         path: "/register",
         name: "register",
         component: () => import('@/views/RegisterUser.vue'),
@@ -76,12 +107,22 @@ const routes = [
       {
         path: "/test",
         name: "test",
+        component: () => import('@/views/TestView2.vue'),
+      },
+      {
+        path: "/test1",
+        name: "test1",
         component: () => import('@/views/TestView.vue'),
+      },
+      {
+        path: "/workflowbuilder",
+        name: "workflowbuilder",
+        component: () => import('@/views/WorkflowBuilder.vue'),
       },
       {
         path: "/text",
         name: "text",
-        component: () => import('@/components/formitems/FileUploadInput.vue'),
+        component: () => import('@/components/formitems/DateInput.vue'),
       }
 ]
 

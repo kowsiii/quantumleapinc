@@ -1,12 +1,13 @@
-
 package oop.quantumleapinc.vms;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.event.EventListener;
 
-import com.example.entity.FormPermissions;
+import oop.quantumleapinc.vms.service.EmailSenderService;
 
 
 
@@ -16,18 +17,14 @@ public class SprintBootApplicationRunApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SprintBootApplicationRunApplication.class, args);
-
-		FormPermissions one = new FormPermissions(false,true,"modifierGuy");
-		FormPermissions two = new FormPermissions(true,true,"modifierGuy");
-
+		
+	}
+	@Autowired
+	private EmailSenderService senderService;
 	
-
-		//System.out.println(one.getModifiedBy());
-		//private int permissionId;
-		//private boolean permissionWrite;
-		//private boolean permissionRead;
-		//private String modifiedBy;
-
+	@EventListener(ApplicationReadyEvent.class)
+	public void sendMail(){
+		senderService.sendEmail("glenn-hamm@outlook.com","test","hello");
 	}
 
 }

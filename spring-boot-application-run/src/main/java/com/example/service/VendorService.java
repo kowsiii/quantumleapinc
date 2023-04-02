@@ -12,7 +12,7 @@ import com.example.entity.Vendor;
 import com.example.entity.returnMsg;
 import com.example.repository.UserRepository;
 import com.example.repository.VendorRepository;
-import com.google.gson.Gson;  
+ 
 
 //talks to repo
 @Service

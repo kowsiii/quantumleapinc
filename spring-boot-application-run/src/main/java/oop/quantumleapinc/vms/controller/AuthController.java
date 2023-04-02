@@ -1,5 +1,6 @@
 package oop.quantumleapinc.vms.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import oop.quantumleapinc.vms.login.payload.request.LoginRequest;
 import oop.quantumleapinc.vms.login.payload.request.SignupRequest;
 import oop.quantumleapinc.vms.login.payload.response.MessageResponse;
@@ -23,9 +24,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.util.EnumUtils;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -85,6 +88,7 @@ public class AuthController {
                     }
             
             user.setRoles(roles);
+            user.setActive("Y");
             userRepository.save(user);
             return ResponseEntity.ok(new MessageResponse("Success", "User registered successfully."));
         } catch (Exception ex) {
@@ -110,7 +114,7 @@ public class AuthController {
             return ResponseEntity.ok()
                     .body(new UserInfoResponse(userDetails.getId(),
                             userDetails.getUsername(),
-                            roles, jwt));
+                            roles, jwt, userDetails.getName()));
 
 //        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwt)
 //                .body(new UserInfoResponse(userDetails.getId(),
@@ -137,6 +141,76 @@ public class AuthController {
             logger.error("users: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new MessageResponse("Error", "Not able to get users."));
+        }
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> getUser(@PathVariable("id") Long userId) {
+        logger.debug("users: get user for " + userId);
+        try {
+            return new ResponseEntity<>(userRepository.findById(userId), HttpStatus.OK);
+        } catch (Exception ex) {
+            logger.error("user: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to get user."));
+        }
+    }
+
+    @PostMapping("/user/{id}")
+    public ResponseEntity<?> updateUser(@RequestBody SignupRequest signUpRequest,  @PathVariable("id") Long userId) {
+        logger.debug("updateUser: update user for " + userId);
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
+            user.setActive(signUpRequest.getActive());
+            user.setName(signUpRequest.getName());
+            Set<Role> roles = new HashSet<>();
+            if (signUpRequest.getRole() != null) {
+                switch (signUpRequest.getRole()) {
+                    case "admin":
+                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(adminRole);
+                        break;
+                    case "approver":
+                        Role appRole = roleRepository.findByName(ERole.ROLE_APPROVER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(appRole);
+                        break;
+                    default:
+                        Role vendRole = roleRepository.findByName(ERole.ROLE_VENDOR)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(vendRole);
+                }
+            } else {
+                throw new RuntimeException("Error: Role is not assigned.");
+            }
+
+            user.getRoles().clear();
+            user.setRoles(roles);
+
+            userRepository.saveAndFlush(user);
+            return ResponseEntity.ok().body(new MessageResponse("Success", "user updated."));
+        } catch (Exception ex) {
+            logger.error("user: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to update user."));
+        }
+    }
+
+    @PostMapping("/password/{id}")
+    public ResponseEntity<?> updatePassword(@RequestBody SignupRequest signUpRequest,  @PathVariable("id") Long userId) {
+        logger.debug("updatePassword: update password for " + userId);
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
+            user.setPassword(encoder.encode(signUpRequest.getPassword()));
+            userRepository.saveAndFlush(user);
+            return ResponseEntity.ok().body(new MessageResponse("Success", "user password updated."));
+        } catch (Exception ex) {
+            logger.error("updatePassword: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to update user password."));
         }
     }
 

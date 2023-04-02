@@ -11,11 +11,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import '@fortawesome/fontawesome-free/css/all.css'
 
-//import { library } from '@fortawesome/fontawesome-svg-core';
-//import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-//import { FontAwesomeIcon } from './plugins/font-awesome'
-// add this
 
 library.add(fas)
 

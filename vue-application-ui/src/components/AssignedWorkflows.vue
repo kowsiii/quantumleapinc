@@ -3,7 +3,7 @@
     <div class="row">
       <!--For all the records-->
       <div v-if="status === 'all'" class="col-md-10 mb-4">
-        <h4 class="text-2xl font-bold dark:text-white">My Workflows</h4>
+        <h4 class="text-2xl font-bold dark:text-white">All</h4>
       </div>
 
       <!--For assigned records-->
