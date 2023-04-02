@@ -129,8 +129,16 @@ export default{
 //     );
       
     },
-    editForm(form) {
-        this.$router.push({name:'/formbuilder', params:{form}})
+    editForm(item) {
+        
+        this.$router.push({
+        path: '/formbuilder',
+        query: {
+        data: JSON.stringify({formConfigId:item.formConfigId})
+    }
+    });
+
+
     },
 
     getForms() {
