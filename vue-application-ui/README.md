@@ -33,3 +33,10 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Starting springboot
+## cd into spring-boot-application-run
+```sh
+start.bat
+```
+
