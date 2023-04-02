@@ -13,7 +13,7 @@
         <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div class="relative h-44">
             <!--Go to the design workflow page-->
-            <a href="#">
+            <a href="/admin/workflowassignment">
               <img class="w-full h-full rounded-t-lg" style="object-fit: contain;" src="../assets/add.png" alt="" onmouseover="this.style.opacity='0.7';" onmouseout="this.style.opacity='1';" />
             </a>
           </div>
@@ -39,9 +39,6 @@
               <!-- Dropdown menu -->
               <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                 <ul class="py-2" aria-labelledby="dropdownButton">
-                  <li>
-                    <router-link to="/admin/manageworkflows/workflowassignment" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Assignment</router-link>
-                  </li>
                   <li>
                     <router-link to="/admin/manageworkflows/workflowstatus" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Status</router-link>
                   </li>

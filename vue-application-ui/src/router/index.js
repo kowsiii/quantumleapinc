@@ -60,7 +60,7 @@ const routes = [
       },
       //This need to change
       {
-        path: "/admin/manageworkflows/workflowassignment",
+        path: "/admin/workflowassignment",
         name: "WorkflowAssignment",
         component: () => import('@/views/WorkflowAssignment.vue'),
       },
