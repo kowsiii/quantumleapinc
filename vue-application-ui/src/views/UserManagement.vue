@@ -144,17 +144,17 @@ onMounted(() => {
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Update User Details</h3>
                 <Form class="space-y-6" as="form" @submit="editUser">
                 
-                    
+                    <Field type="hidden" name="id" v-model="selecteduser.id" />
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                         <Field type="text" name="name" id="name" v-model="selecteduser.name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name" required />
                     
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <Field type="email" name="username" id="email" v-model="selecteduser.username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+                        <input disabled type="email" name="username" id="email" v-model="selecteduser.username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <Field type="text" name="password" id="password" placeholder="Password here..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                        <input type="text" name="password" id="password" placeholder="Password here..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                     </div>
                     <div>
                         
@@ -280,10 +280,9 @@ export default {
     },
     editUser(user) {
         console.log(user)
-        UserService.editUser().then(
+        UserService.editUser(user.id,user).then(
       (response) => {
-        this.users = response.data;
-        console.log(this.latestUsers)
+        console.log(response.data)
       },
       (error) => {
         this.error =
