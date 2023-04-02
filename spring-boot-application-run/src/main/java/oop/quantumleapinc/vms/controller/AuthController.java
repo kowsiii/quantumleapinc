@@ -162,7 +162,7 @@ public class AuthController {
         try {
             User user = userRepository.findById(userId)
                     .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
-            user.setActive(signUpRequest.getActive());
+            //user.setActive(signUpRequest.getActive());
             user.setName(signUpRequest.getName());
             Set<Role> roles = new HashSet<>();
             if (signUpRequest.getRole() != null) {
@@ -195,6 +195,23 @@ public class AuthController {
             logger.error("user: " + ex.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new MessageResponse("Error", "Not able to update user."));
+        }
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<?> statusUpdateUser(@RequestBody SignupRequest signUpRequest,  @PathVariable("id") Long userId) {
+        logger.debug("updateUser: update user for " + userId);
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new EntityNotFoundException(userId.toString()));
+            user.setActive(signUpRequest.getActive());
+
+            userRepository.saveAndFlush(user);
+            return ResponseEntity.ok().body(new MessageResponse("Success", "user updated."));
+        } catch (Exception ex) {
+            logger.error("user: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to enable/disable user."));
         }
     }
 
