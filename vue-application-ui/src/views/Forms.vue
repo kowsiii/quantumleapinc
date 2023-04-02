@@ -136,25 +136,26 @@ export default{
   },
   methods: {
     createForm(title) {
-      UserService.newForm({title:title.title, formDesign:`{"design": [{ "fields": [] }]}`}).then(
-      (response) => {
-        this.$router.push({
-  path: '/formbuilder',
-  query: {
-    data: JSON.stringify({title:title.title, formDesign:`{"design": [{ "fields": [] }]}`})
-  }
-});
-      },
-      (error) => {
-        this.error =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message || error.message.toString();
-          console.log(this.error);
+        this.$router.push('/formbuilder')
+//       UserService.newForm({title:title.title, formDesign:`{"design": [{ "name": "Section 1", "fields": [] }]}`}).then(
+//       (response) => {
+//         this.$router.push({
+//   path: '/formbuilder',
+//   query: {
+//     data: JSON.stringify({title:title.title, formDesign:`{"design": [{ "fields": [] }]}`})
+//   }
+// });
+//       },
+//       (error) => {
+//         this.error =
+//           (error.response &&
+//             error.response.data &&
+//             error.response.data.message) ||
+//           error.message || error.message.toString();
+//           console.log(this.error);
 
-      }
-    );
+//       }
+//     );
       
     }
   }

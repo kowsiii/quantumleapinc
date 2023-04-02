@@ -7,9 +7,9 @@
       </div>
     </div>
         
-    <div class="row">
+    <div class="row" >
       <!--For new workflow-->
-      <div class="col-4">
+      <div class="col-4" @click="gotoWorkflowAssigner">
         <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div class="relative h-44">
             <!--Go to the design workflow page-->
@@ -74,6 +74,11 @@ export default {
     return {
       user: 'admin',
     };
+  },
+  methods: {
+    gotoWorkflowAssigner() {
+      this.$router.push("/admin/manageworkflows/createworkflow");
+    }
   }
 };
 </script>

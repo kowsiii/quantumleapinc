@@ -12,7 +12,9 @@ class UserService {
     return axios.post(API_URL + 'auth/signup', user, { headers: authHeader() });
   }
 
-  
+  editUser(id,user) {
+    return axios.post(API_URL + 'auth/user/'+ id, user, { headers: authHeader() });
+  }
 
   newForm(form) {
     return axios.post(API_URL + 'config/form/add', form, { headers: authHeader() });
@@ -22,8 +24,8 @@ class UserService {
     return axios.post(API_URL + 'config/form/update/' + id, config, { headers: authHeader() });
   }
 
-  getPublicContent() {
-    return axios.get(API_URL + 'all');
+  getListofForms() {
+    return axios.get(API_URL + 'config/form/list', { headers: authHeader() });
   }
 
   getUserBoard() {
