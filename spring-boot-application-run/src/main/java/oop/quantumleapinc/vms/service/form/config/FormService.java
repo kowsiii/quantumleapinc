@@ -87,9 +87,10 @@ public class FormService {
             form.setFormConfigId(formRequest.getFormConfigId());
             form.setFormConfigInfoId(formRequest.getFormConfigInfoId());
             form.setPath(formRequest.getPath());
-            form.setUsername(loginUser);
+            form.setUsername(formRequest.getUsername());
             form.setCreatedBy(loginUser);
             form.setCreatedDate(LocalDateTime.now());
+            form.setAssignees(formRequest.getAssignees());
         }
         form.setStatus(formRequest.getStatus());
         form.setFormData(formRequest.getFormData());

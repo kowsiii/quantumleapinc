@@ -12,9 +12,11 @@ public class FormRequest implements Serializable {
     private Long formConfigId;
     private Long formConfigInfoId;
 
-    @NotBlank
     @Size(max = 50000)
     private String formData;
+
+    @Size(max = 50000)
+    private String assignees;
 
     @NotBlank
     @Size(max = 255)
@@ -22,8 +24,11 @@ public class FormRequest implements Serializable {
 
     @NotBlank
     @Size(max = 50)
-    @Column(length=50, nullable=false, unique=false)
     private String status;
+
+    @NotBlank
+    @Size(max = 255)
+    private String username;
 
     public FormRequest() {
     }
@@ -74,5 +79,21 @@ public class FormRequest implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAssignees() {
+        return assignees;
+    }
+
+    public void setAssignees(String assignees) {
+        this.assignees = assignees;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

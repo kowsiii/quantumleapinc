@@ -21,10 +21,13 @@ public class Form implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long formId;
 
-    @NotBlank
     @Size(max = 50000)
-    @Column(length=50000, nullable=false, unique=false)
+    @Column(length=50000, nullable=true, unique=false)
     private String formData;
+
+    @Size(max = 50000)
+    @Column(length=50000, nullable=true, unique=false)
+    private String assignees;
 
     @NotBlank
     @Size(max = 255)

@@ -1,5 +1,7 @@
 package oop.quantumleapinc.vms.payload.form;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 public class FormDataResponse {
@@ -24,6 +26,8 @@ public class FormDataResponse {
     private Long formConfigId;
 
     private Long formConfigInfoId;
+
+    private String assignees;
 
     public FormDataResponse() {
     }
@@ -114,5 +118,13 @@ public class FormDataResponse {
 
     public void setFormConfigInfoId(Long formConfigInfoId) {
         this.formConfigInfoId = formConfigInfoId;
+    }
+
+    public String getAssignees() {
+        return assignees;
+    }
+
+    public void setAssignees(String assignees) {
+        this.assignees = assignees;
     }
 }
