@@ -39,6 +39,10 @@ class UserService {
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+
+  deleteForm(id, status){
+    return  axios.post(API_URL + 'config/form/status/'+id,status,{ headers: authHeader()})
+  }
 }
 
 export default new UserService();
