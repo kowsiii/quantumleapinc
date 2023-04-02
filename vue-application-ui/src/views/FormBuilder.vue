@@ -107,7 +107,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
         </div>
 
         <div class="split right" style="padding:10px 20px;">
-            <FormFieldOptionsModal :field="selectedfield" v-if="selectedfield" />
+            <FormFieldOptionsModal :field="selectedfield" v-if="selectedfield" @delete="deleteElement"/>
         </div>
     </div>
 </template>
@@ -210,6 +210,9 @@ export default {
     data: JSON.stringify(this.selectedFields)
   }
 });
+        },
+        deleteElement() {
+            
         }
 
     },
