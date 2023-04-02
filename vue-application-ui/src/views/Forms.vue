@@ -44,16 +44,16 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    Form name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+                    Created Date
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Last Modified
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    Status
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -61,57 +61,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr v-for='items in forms' class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    {{ items.formConfigInfoSet[0].title }}
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    {{ items.createdDate }}
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                    {{ items.modifiedDate }}
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                    {{ items.activeStatus  }}
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
+                    <a href="#" @click="editForm(items)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
             </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
+            
         </tbody>
     </table>
 </div>
@@ -132,6 +102,7 @@ export default{
   data() {
     return {
       user: 'admin',
+      forms:""
     };
   },
   methods: {
@@ -157,7 +128,34 @@ export default{
 //       }
 //     );
       
-    }
+    },
+    editForm(form) {
+        this.$router.push({name:'/formbuilder', params:{form}})
+    },
+
+    getForms() {
+        UserService.getListofForms().then(
+      (response) => {
+       
+        console.log(response.data)
+        this.forms = response.data
+    
+      },
+      (error) => {
+        this.error =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message || error.message.toString();
+          console.log(this.error);
+
+      }
+    );
   }
+},
+created() {
+    this.getForms();
+    
+  },
 }
 </script>
