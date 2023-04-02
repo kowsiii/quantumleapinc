@@ -121,6 +121,14 @@ public class FormConfigService {
     }
 
     @Transactional
+    public FormConfigResponse delete(String loginUser, Long formConfigId) {
+        FormConfig formConfig = formConfigRepository.findById(formConfigId)
+                .orElseThrow(() -> new EntityNotFoundException(formConfigId.toString()));
+        formConfigRepository.deleteByFormConfigId(formConfigId);;
+        return transformToResponse(formConfig);
+    }
+
+    @Transactional
     public FormConfigResponse updateStatus(String loginUser, Long formConfigId, String status) {
         FormConfig formConfig = formConfigRepository.findById(formConfigId)
                 .orElseThrow(() -> new EntityNotFoundException(formConfigId.toString()));

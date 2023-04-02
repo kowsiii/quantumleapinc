@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface FormConfigRepository extends JpaRepository<FormConfig, Long> {
     Optional<FormConfig> findByRandomPath(String randomPath);
     List<FormConfig> findByCreatedBy(String username);
+    void deleteByFormConfigId(Long formConfigId);
 }

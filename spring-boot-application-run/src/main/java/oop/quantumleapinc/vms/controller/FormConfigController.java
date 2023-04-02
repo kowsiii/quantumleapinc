@@ -53,6 +53,20 @@ public class FormConfigController {
         }
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long formConfigId) {
+        logger.debug("update: update form config for " +  formConfigId);
+        try {
+            String loginUser = SecurityContextHolder.getContext().getAuthentication().getName();
+            FormConfigResponse formConfigResponse = formConfigService.delete(loginUser, formConfigId);
+            return ResponseEntity.ok().body(new MessageResponse("Success", "form config updated."));
+        } catch (Exception ex) {
+            logger.error("update: " + ex.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error", "Not able to update form config."));
+        }
+    }
+
     @GetMapping("/get/{id}")
     public ResponseEntity<?> get(@PathVariable("id") Long formConfigId) {
         logger.debug("get: form config for " + formConfigId);
