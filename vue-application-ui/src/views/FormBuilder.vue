@@ -12,7 +12,7 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                     <button class="tab-link" @click="activeTab = 'tab1'" :class="{ 'active': activeTab === 'tab1' }">
                         Elements</button>
                     <button class="tab-link" @click="activeTab = 'tab2'" :class="{ 'active': activeTab === 'tab2' }">
-                        Tree</button>
+                        Section</button>
 
                 </div>
                 <div class="tab-content">
@@ -56,8 +56,15 @@ import { basicComponents } from "../components/formitems/componentsConfig";
                         </div>
 
                     </div>
-                    <div v-show="activeTab === 'tab2'" @click="print">Tab 2 content goes here.{{ selectedFields }}</div>
+                    <div v-show="activeTab === 'tab2'" @click="print">
+                    
+                        <div class="p-3">
+            <label for="sect_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section Name</label>
+            <input type="text" id="sect_name" :value="selectedFields[selectedpage].name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Section Name" required>
+        </div>
 
+                    </div>
+                    
                 </div>
             </div>
 
@@ -131,16 +138,20 @@ export default {
             activeTab: "tab1",
             activeSect: "fields",
             steps: 0,
-            selectedFields: "", //must be called dynamically
+            selectedFields: [{ "fields": [] }], //must be called dynamically
             selectedfield: null,
             counter: 0,
             selectedpage: 0,
+            title:""
 
         };
     },
     computed: {
         formconfig() {
             return this.selectedFields;
+        },
+        defsectname() {
+            return "Section "+(this.selectedpage+1)
         }
     }
     ,
@@ -168,7 +179,7 @@ export default {
             console.log(this.selectedFields)
         },
         saveForm() {
-            UserService.saveForm(1,{formDesign:JSON.stringify(this.selectedFields), title:"testForm"}).then(
+            UserService.saveForm(1,{formDesign:JSON.stringify(this.selectedFields), title:this.title}).then(
       (response) => {
         console.log(response.data)
       },
@@ -185,7 +196,7 @@ export default {
         },
         addPage() {
             this.steps+=1
-            this.selectedFields.push({ fields: [] })
+            this.selectedFields.push({ name:this.defsectname, fields: [] })
             this.changePage(this.steps+1)
         },
         changePage(page) {
@@ -203,8 +214,10 @@ export default {
 
     },
     mounted() {
-        var interim = JSON.parse(this.$route.query.data);
-        this.selectedFields = JSON.parse(interim.formDesign).design;
+        // var interim = JSON.parse(this.$route.query.data);
+        // this.selectedFields = JSON.parse(interim.formDesign).design;
+        // this.title = JSON.parse(interim.formDesign).title
+        
         
     },
 
